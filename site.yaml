@@ -1,0 +1,268 @@
+# ============================================================
+# Rishabh Gupta - portfolio website content
+# ------------------------------------------------------------
+# Everything you see on the site comes from this file.
+# Edit, save, refresh the page.
+#
+#   - Text goes in quotes. **double stars** = bold. [text](https://link) = a link.
+#   - Each "- " starts a new item. Keep the indentation (spaces, not tabs).
+#   - Delete a line (or put # in front of it) to hide it.
+#   - Leave a link as "" to hide its button.
+#   - Images: put the file in the "images" folder and write  image: images/name.png
+# ============================================================
+
+profile:
+  name: Rishabh Gupta
+  headline: Technical Game Designer
+  location: MP, India
+  email: rishabh.bansal1598@gmail.com
+  # Heading of the contact section at the bottom
+  contact_heading: "Want to connect? Awesome!"
+  # phone: "+91 96304 60469"        # remove the # to show your number on the site
+  about: "Game Designer with nearly 4 years of experience across 10+ shipped titles. My technical knowledge of C# and the Unity Engine helps me quickly prototype my ideas and test them with the team early on. I've worked directly with clients and publishers, and many of those relationships turned into repeat work. In a team, I like being direct and clear with feedback, and I'm always happy to get the same in return."
+  links:
+    - label: LinkedIn
+      url: https://linkedin.com/in/rishabhg099
+    - label: itch.io
+      url: https://rishabhg099.itch.io
+
+# Small numbers right under your name
+stats:
+  - value: "4"
+    label: years designing games
+  - value: "10+"
+    label: shipped titles
+  - value: "15+"
+    label: client games
+
+# Download buttons. Replace the PDFs in the "files" folder when you update them
+# (keep the same file names, or change them here).
+downloads:
+  - label: Resume
+    file: files/Rishabh_Gupta_Resume.pdf
+
+skills:
+  highlight: [Systems Design, KPI Analysis, Unity Engine]
+  other: [C#, Economy Balancing, Design Documentation, "Analytics SDKs (Firebase, GameAnalytics)", Prototyping, UI Design, Figma]
+
+projects_subtitle: ""
+
+# Line shown at the start of the Projects section ({star} becomes the star icon)
+projects_note: "Projects marked with {star} showcase a strong part of my skill set."
+
+# ------------------------------------------------------------
+# PROJECTS
+#   star: true -> marks the project as a favourite (star icon + highlight)
+#   studio  -> which company box the project goes in. The box shows your role and
+#              dates from the matching company under "experience" below.
+#   note    -> optional extra line
+#   kpis    -> optional test numbers, shown as small chips
+#   links   -> one button per link (Google Play, App Store, itch.io, ...)
+# Projects show in the same order as written here.
+# ------------------------------------------------------------
+projects:
+  - title: "Cozy Words: Word Trivia"
+    star: true
+    studio: Nearmint Studios
+    genre: Word, Trivia
+    role: Systems Design, UI Design, Lead Unity Developer
+    note: "Designed the **Grid system** and **Objective Phrase** system. Updated after launch based on player feedback."
+    kpis:
+      - label: CPI
+        value: "$1.00"
+      - label: D1
+        value: "32%"
+      - label: D7
+        value: "5%"
+    kpi_note: First test with HitApps (US)
+    links:
+      - label: Google Play
+        url: https://play.google.com/store/apps/details?id=com.NearMint.CozyWords&hl=en_IN
+
+  - title: "Crash Attack!"
+    star: true
+    studio: Nearmint Studios
+    genre: Arcade
+    role: Systems Design, UI Design, Lead Unity Developer
+    note: "Designed **block spawning, card upgrades, procedural level progression and meta progression**. Marked as a **Hot Prototype** on Voodoo's platform."
+    kpis:
+      - label: CPI
+        value: "$1.65"
+      - label: D1
+        value: "30%"
+      - label: D7
+        value: "10%"
+      - label: Playtime
+        value: "30 min"
+    kpi_note: First test with Voodoo
+    links:
+      - label: Google Play
+        url: https://play.google.com/store/apps/details?id=com.NearMintStudios.CrashAttack&hl=en_IN
+
+  - title: "Ice Cream Connect!"
+    studio: Nearmint Studios
+    genre: Puzzle
+    role: Game Designer & Programmer
+    note: "Built in a 4-week internal game jam; later attracted Voodoo's interest."
+    links:
+      - label: Google Play
+        url: https://play.google.com/store/apps/details?id=com.NearMintStudios.IceCreamConnect&hl=en_IN
+
+  - title: Client Projects (15+ games)
+    studio: Nearmint Studios
+    genre: Puzzle, Arcade, Merge
+    role: Game Designer
+    note: "For clients like PlayOn (Papaya Stars) and JustPlay (Gimica Games), from brief to launch. Feel free to request more info."
+    links: []
+
+  - title: Idle Car Showroom
+    studio: Funcell Games
+    genre: Idle
+    role: Systems Design, Economy Balancing
+    links:
+      - label: Google Play
+        url: ""        # TODO: add the store link
+  - title: Human Run
+    studio: Funcell Games
+    genre: Arcade
+    role: Systems Design, Economy Balancing
+    links:
+      - label: Google Play
+        url: https://play.google.com/store/apps/details?id=com.funcell.InfiniteRunner
+      - label: App Store
+        url: https://apps.apple.com/us/app/human-run/id1659803053
+  - title: Milk Inc.
+    studio: Funcell Games
+    genre: Idle
+    role: Systems Design
+    links:
+      - label: App Store
+        url: https://apps.apple.com/us/app/milk-inc/id1553213393
+  - title: Idle Cruiseliner
+    studio: Funcell Games
+    genre: Idle
+    role: Systems Design
+    links:
+      - label: Google Play
+        url: https://play.google.com/store/apps/details?id=com.funcell.cruiseliner
+  - title: Perfect Lie
+    studio: Funcell Games
+    genre: Narrative
+    role: Live Content Design
+    links:
+      - label: Google Play
+        url: https://play.google.com/store/apps/details?id=com.funcell.perfectlie
+  - title: Get Expelled
+    studio: Funcell Games
+    genre: Narrative
+    role: Live Content Design
+    links:
+      - label: Google Play
+        url: https://play.google.com/store/apps/details?id=com.funcell.getexpelled
+      - label: App Store
+        url: https://apps.apple.com/us/app/get-expelled/id1641683316
+  - title: Hyper Hostess
+    studio: Funcell Games
+    genre: Narrative
+    role: Content Design
+    links:
+      - label: Google Play
+        url: https://play.google.com/store/apps/details?id=com.funcell.hyperhostess
+  - title: Hyper PA
+    studio: Funcell Games
+    genre: Narrative
+    role: Content Design
+    links:
+      - label: Google Play
+        url: https://play.google.com/store/apps/details?id=com.funcell.hyperpa
+      - label: App Store
+        url: https://apps.apple.com/us/app/hyper-pa/id1602627467
+
+  - title: Jungle Adventures
+    studio: Rendered Ideas
+    genre: Platformer
+    role: Level Design (trainee)
+    links:
+      - label: Google Play
+        url: https://play.google.com/store/apps/details?id=com.renderedideas.jungleadventures2&hl=en_IN
+  - title: Road Fighter Clone
+    studio: Rendered Ideas
+    genre: Racing (NES clone)
+    role: Game Designer, led a team of 3
+    note: Built for Roku devices.
+    links: []
+
+  - title: "I Ended A 100-Year War By Spinning A Yo-Yo!"
+    star: true
+    studio: Game Jams
+    genre: Tower Defence
+    role: Game Designer
+    links:
+      - label: Play on itch.io
+        url: https://rishabhg099.itch.io/i-ended-a-100-year-war-by-spinning-a-yoyo
+  - title: Parasocial
+    star: true
+    studio: Game Jams
+    genre: Puzzle, Sokoban
+    role: Game Designer
+    links:
+      - label: Play on itch.io
+        url: https://veekshith-k.itch.io/parasocial
+  - title: Shape Shooter
+    studio: Game Jams
+    genre: Top-Down Shooter
+    role: Game Designer
+    links:
+      - label: Play on itch.io
+        url: https://veekshith-k.itch.io/shapeshooter
+  - title: "Cubo's Confines"
+    studio: Game Jams
+    genre: Puzzle
+    role: Game Designer
+    links:
+      - label: Play on itch.io
+        url: https://veekshith-k.itch.io/cubos-confines
+
+# ------------------------------------------------------------
+# COMPANIES
+#   Not shown as its own section. Each company's role and dates appear in the
+#   header of its box under Projects (matched by the company name = "studio").
+# ------------------------------------------------------------
+experience:
+  - company: Nearmint Studios
+    role: Technical Game Designer
+    dates: October 2023 - Present
+    bullets:
+      - "Designed systems and UI, and led Unity development on **Cozy Words** and **Crash Attack!**, tested with **HitApps** and **Voodoo**."
+      - "Built **15+ games** for clients like **PlayOn (Papaya Stars)** and **JustPlay (Gimica Games)**, from brief to launch."
+      - "Earned **repeat engagements** from clients through consistent quality and polish."
+  - company: Funcell Games
+    role: Game Designer
+    dates: March 2023 - October 2023
+    bullets:
+      - "**Gameplay & Systems Designer:** Designed mechanics and systems for idle arcade and puzzle games."
+      - "**Economy & Balancing:** Balanced in-game economies for idle games like Idle Car Showroom and Human Run. Tuned puzzle difficulty based on tester and player feedback."
+      - "**Documentation:** Wrote design documents, starting with early drafts and expanding them into detailed docs after prototyping."
+      - "**Live Content Designer:** Created content for live narrative games (Perfect Lie, Get Expelled, Hyper Hostess, Hyper PA)."
+      - "**Design Lead:** Led projects with developers, artists and QA to match client quality expectations and meet deadlines."
+  - company: Rendered Ideas
+    role: Trainee Game Designer
+    dates: September 2022 - November 2022
+    bullets:
+      - "Designed levels for their original IP, **Jungle Adventures**, using an in-house plugin."
+      - "Led a small team (programmer, artist, UI designer) to build a **Road Fighter** clone for Roku devices."
+
+education:
+  - degree: "Bachelor's Degree in Computer Science and Game Development"
+    school: Backstage Pass Institute of Gaming and Technology
+    dates: 2019 - 2023
+
+# ------------------------------------------------------------
+# BEYOND WORK
+# ------------------------------------------------------------
+achievements:
+  - "Grew a gaming YouTube channel (**BhaiLogKaAdda**) to **700k+ subscribers**, which gave me deep insight into player behavior and what makes games shareable."
+  - "Co-hosted **The Game Awards 2021** in India."
+  - "Got my friends to experience the beauty that is Outer Wilds."
+languages: [English (Fluent), Hindi (Native), Japanese (Beginner)]
+hobbies: [Speedrunning Games, Trading Card Collecting, Video and Image Editing]
