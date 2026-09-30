@@ -204,6 +204,34 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); scroll-m
 .mail { font: 500 clamp(16px, 2.4vw, 22px)/1.3 var(--mono); color: var(--accent-soft); user-select: all; overflow-wrap: anywhere; }
 .copy { cursor: pointer; }
 
+/* Background glow, scroll reveal and hover effects */
+.bg-glow { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.bg-glow i { position: absolute; border-radius: 50%; will-change: transform; }
+.bg-glow .b1 { width: 70vmax; height: 70vmax; top: -25vmax; left: -20vmax; opacity: .13;
+  background: radial-gradient(circle, var(--accent), transparent 65%);
+  transform: translate3d(0, calc(var(--sy, 0) * -.08px), 0); }
+.bg-glow .b2 { width: 80vmax; height: 80vmax; bottom: -35vmax; right: -25vmax; opacity: .5;
+  background: radial-gradient(circle, #2B3550, transparent 65%);
+  transform: translate3d(0, calc(var(--sy, 0) * -.16px), 0); }
+.company, .spin { position: relative; }
+.company::after, .spin::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0; transition: opacity .3s;
+  border-radius: inherit; padding: 1px;
+  background: radial-gradient(220px circle at var(--cx, 50%) var(--cy, 50%), rgba(227,139,115,.45), transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+@media (hover: hover) { .company:hover::after, .spin:hover::before { opacity: 1; } }
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease-out, transform .6s ease-out; }
+.js .reveal.in { opacity: 1; transform: none; }
+.spin-bg { transition: opacity .15s, transform .25s ease-out; }
+@media (hover: hover) {
+  .btn:hover { transform: translateY(-1px); }
+  .company { transition: border-color .2s; }
+  .company:hover { border-color: #3A4252; }
+  .pills li { transition: border-color .2s, transform .2s; }
+  .pills li:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .spin:hover .spin-bg { transform: scale(1.08) translate(calc(var(--px, 0) * -12px), calc(var(--py, 0) * -8px)); }
+}
+
 .error { margin: 80px auto; max-width: 620px; padding: 24px; border: 1px solid var(--accent); border-radius: var(--radius); background: var(--surface); }
 .error code { font-family: var(--mono); color: var(--accent-soft); }
 </style>
@@ -252,6 +280,7 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); scroll-m
     document.title = `${p.name || "Portfolio"}${p.headline ? " · " + p.headline : ""}`;
 
     const html = `
+<div class="bg-glow" aria-hidden="true"><i class="b1"></i><i class="b2"></i></div>
 <header class="top"><div class="wrap">
   <a class="brand" href="#top">${esc(p.name)}<span>.</span></a>
   <nav class="nav" aria-label="Sections">
@@ -347,6 +376,33 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); scroll-m
   <div class="viewer-pages" id="viewerPages" tabindex="0" aria-label="Document preview"></div>
 </dialog>`;
     document.getElementById("app").innerHTML = html;
+
+    // Soft background glow (moves with scroll and mouse) and sections easing in
+    const root = document.documentElement;
+    const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!calm) {
+      let ticking = false;
+      const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { root.style.setProperty("--sy", scrollY); ticking = false; }); } };
+      addEventListener("scroll", onScroll, { passive: true }); onScroll();
+      if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        document.querySelectorAll(".company, .spin").forEach(el => el.addEventListener("pointermove", e => {
+          const r = el.getBoundingClientRect();
+          el.style.setProperty("--cx", (e.clientX - r.left) + "px");
+          el.style.setProperty("--cy", (e.clientY - r.top) + "px");
+        }, { passive: true }));
+        const card = document.getElementById("spin");
+        if (card) card.addEventListener("pointermove", e => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty("--px", ((e.clientX - r.left) / r.width - .5).toFixed(3));
+          card.style.setProperty("--py", ((e.clientY - r.top) / r.height - .5).toFixed(3));
+        });
+      }
+      if ("IntersectionObserver" in window) {
+        root.classList.add("js");
+        const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } }), { threshold: .08, rootMargin: "0px 0px -40px 0px" });
+        document.querySelectorAll(".company, .about-lead, .fact, .fav-note, .spin, .contact > *").forEach(el => { el.classList.add("reveal"); io.observe(el); });
+      }
+    }
 
     // Resume / CV viewer
     const dlg = document.getElementById("viewer");
