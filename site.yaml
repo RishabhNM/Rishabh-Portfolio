@@ -196,7 +196,7 @@ projects:
     star: true
     studio: Game Jams
     genre: Tower Defence
-    role: Game Designer
+    role: Game Designer, Systems Designer, Economy Balance
     links:
       - label: Play on itch.io
         url: https://rishabhg099.itch.io/i-ended-a-100-year-war-by-spinning-a-yoyo
@@ -204,7 +204,7 @@ projects:
     star: true
     studio: Game Jams
     genre: Puzzle, Sokoban
-    role: Game Designer
+    role: Systems Designer
     links:
       - label: Play on itch.io
         url: https://veekshith-k.itch.io/parasocial
@@ -218,7 +218,7 @@ projects:
   - title: "Cubo's Confines"
     studio: Game Jams
     genre: Puzzle
-    role: Game Designer
+    role: Systems Designer
     links:
       - label: Play on itch.io
         url: https://veekshith-k.itch.io/cubos-confines

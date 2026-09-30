@@ -3,8 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Rishabh Gupta</title>
-<meta name="description" content="Rishabh Gupta, Technical Game Designer. Systems design, UI and Unity prototyping for mobile games.">
+<title>Rishabh Gupta Portfolio</title>
+<meta name="description" content="Portfolio of Rishabh Gupta, a Technical Game Designer with nearly 4 years of experience and 10+ shipped mobile games. Systems design, economy balancing and Unity prototyping.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rishabh Gupta Portfolio">
+<meta property="og:description" content="Portfolio of Rishabh Gupta, a Technical Game Designer with nearly 4 years of experience and 10+ shipped mobile games. Systems design, economy balancing and Unity prototyping.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rishabh Gupta Portfolio">
+<meta name="twitter:description" content="Portfolio of Rishabh Gupta, a Technical Game Designer with nearly 4 years of experience and 10+ shipped mobile games. Systems design, economy balancing and Unity prototyping.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Lato:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -76,7 +82,7 @@ strong { color: var(--fg); font-weight: 700; }
 .intro { padding-block: 72px 56px; display: grid; gap: 24px; }
 .eyebrow { font: 500 12px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-soft); display: flex; gap: 12px; flex-wrap: wrap; }
 .eyebrow span + span::before { content: "/"; margin-right: 12px; color: var(--line); }
-.intro h1 { margin: 0; font: 700 clamp(40px, 7vw, 76px)/1.02 var(--display); letter-spacing: -.02em; text-wrap: balance; }
+.intro h1 { margin: 0; font: 700 clamp(40px, 7vw, 76px)/1.02 var(--display); letter-spacing: -.01em; text-transform: uppercase; text-wrap: balance; }
 .intro-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .stats { display: flex; flex-wrap: wrap; gap: 12px 40px; margin: 0; padding: 0; list-style: none; }
 .stats li { display: grid; gap: 2px; }
@@ -277,7 +283,7 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); scroll-m
       if (!g) groups.push(g = { name: key, items: [], job: jobs.find(j => j.company === key) });
       g.items.push(x);
     });
-    document.title = `${p.name || "Portfolio"}${p.headline ? " · " + p.headline : ""}`;
+    document.title = `${p.name ? p.name + " " : ""}Portfolio`;
 
     const html = `
 <div class="bg-glow" aria-hidden="true"><i class="b1"></i><i class="b2"></i></div>
