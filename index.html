@@ -365,7 +365,9 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); scroll-m
       pagesBox.innerHTML = '<p class="viewer-msg">Loading…</p>';
       try {
         const lib = await loadPdfjs();
-        const pdf = await lib.getDocument(file).promise;
+        const res = await fetch(file, { cache: "no-cache" });   // always check for a newer file
+        if (!res.ok) throw new Error("PDF not found");
+        const pdf = await lib.getDocument({ data: await res.arrayBuffer() }).promise;
         if (id !== renderId) return;
         pagesBox.innerHTML = "";
         const width = Math.min(pagesBox.clientWidth - 32, 860);
