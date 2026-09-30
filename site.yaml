@@ -41,6 +41,46 @@ downloads:
   - label: Resume
     file: files/Rishabh_Gupta_Resume.pdf
 
+# ------------------------------------------------------------
+# FAVOURITE GAMES  (the "Spin" card under Projects)
+#   title      -> game name
+#   quote      -> your line about it
+#   steam      -> the Steam app id (the number in store.steampowered.com/app/NUMBER/).
+#                 It gives the background art and a "Steam" button.
+#   image      -> optional. Use your own art instead, e.g. images/game.jpg
+#   link       -> optional. A different store page (for games not on Steam)
+#   link_label -> optional. Text on that button, e.g. Nintendo
+# Delete the whole "favourites" list to hide the section.
+# ------------------------------------------------------------
+favourites_note: "Games tell a lot about a person. Here are some of my favourites!"
+favourites:
+  - title: Balatro
+    steam: 2379780
+    quote: "The fact that it summoned an entire genre of games says a lot about how good it is. Had a ton of fun trying out different builds and entirely breaking the game! Learned a lot about systems design for card upgrades here."
+  - title: Stardew Valley
+    steam: 413150
+    quote: "They said it was a cozy game, they clearly didn't want me to know about the Skull Caverns. Min-Maxing each day became my one true purpose."
+  - title: "The Legend of Zelda: Breath of the Wild"
+    link: https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-switch/
+    link_label: Nintendo
+    image: https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/store/software/switch/70010000000025/7137262b5a64d921e193653f8aa0b722925abc5680380ca0e18a5cfd91697f58
+    quote: "Out of the many MANY open worlds I've played, BOTW manages to remain on the top of my list. It trusts you to try things, and rewards you when it works."
+  - title: Resident Evil
+    steam: 304240
+    quote: "The mansion is a puzzle you slowly learn. Going back through it feels great."
+  - title: "NieR: Automata"
+    steam: 524220
+    quote: "If this game doesn't make you feel something, maybe you're just heartless... something to think about."
+  - title: Outer Wilds
+    steam: 753640
+    quote: "The only thing you gain is what you learn. What a perfect way to design progress."
+  - title: Tunic
+    steam: 553420
+    quote: "Unveiling the game manual bit by bit is the game. But there's so much stuff that gets left overlooked, and when you finally notice it, your perspective on the entire game changes in an instant, you notice things you never did before! What a game!"
+  - title: Digseum
+    steam: 3361470
+    quote: "I love playing short incremental games, they've taught me a lot about economy balance. Digseum is the most charming one I've played."
+
 skills:
   highlight: [Systems Design, KPI Analysis, Unity Engine]
   other: [C#, Economy Balancing, Design Documentation, "Analytics SDKs (Firebase, GameAnalytics)", Prototyping, UI Design, Figma]
@@ -66,7 +106,7 @@ projects:
     studio: Nearmint Studios
     genre: Word, Trivia
     role: Systems Design, UI Design, Lead Unity Developer
-    note: "Designed the **Grid system** and **Objective Phrase** system. Updated after launch based on player feedback."
+    note: "Designed the **Grid System**, **Objective Phrase** and **Mystery Tile** systems. The game was further updated after launch with more content, including challenges and additional levels."
     kpis:
       - label: CPI
         value: "$1.00"

@@ -160,6 +160,23 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); scroll-m
 .row.fav { background: color-mix(in srgb, var(--accent) 6%, transparent); box-shadow: inset 3px 0 0 var(--accent); }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
+/* Favourite games: random pick card, Steam capsule art as the background */
+.spin { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); min-height: 320px; display: flex; }
+.spin-bg { position: absolute; inset: 0; background: center / cover no-repeat; opacity: 0; transform: scale(1.04); transition: opacity .15s; }
+.spin-bg.on { opacity: .6; }
+.spin.rolling .spin-bg { filter: blur(3px) saturate(1.2); }
+.spin::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(90deg, rgba(17,20,27,.92) 0%, rgba(17,20,27,.7) 45%, rgba(17,20,27,.25) 100%), linear-gradient(0deg, rgba(17,20,27,.6), transparent 50%); }
+.spin-body { position: relative; z-index: 1; display: grid; align-content: end; gap: 12px; padding: 28px; width: 100%; max-width: 640px; }
+.spin-label { font: 500 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-soft); }
+.spin-title { margin: 0; font: 700 clamp(26px, 4.5vw, 44px)/1.1 var(--display); letter-spacing: -.01em; text-wrap: balance; }
+.spin-quote { margin: 0; font-size: clamp(16px, 2vw, 19px); line-height: 1.6; color: var(--fg); max-width: 52ch; min-height: 1.6em; }
+.spin-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.spin-actions .btn[hidden] { display: none; }
+.spin.landed .spin-title, .spin.landed .spin-quote { animation: land .2s ease-out; }
+@keyframes land { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (max-width: 560px) { .spin { min-height: 300px; } .spin-body { padding: 20px; } }
+
 /* About: a lead paragraph, then label / content rows */
 .about-lead { margin: 0 0 40px; max-width: 60ch; font-size: clamp(18px, 2vw, 21px); line-height: 1.65; color: var(--fg); }
 .about-lead strong { color: var(--accent-soft); }
@@ -182,12 +199,11 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); scroll-m
 .edu span { color: var(--muted); font-size: 14px; }
 
 /* Contact */
-.contact { padding-block: 72px 48px; border-top: 1px solid var(--line); display: grid; gap: 24px; }
+.contact { padding-block: 72px 112px; border-top: 1px solid var(--line); display: grid; gap: 24px; }
 .contact h2 { margin: 0; font: 700 clamp(30px, 4.5vw, 48px)/1.1 var(--display); letter-spacing: -.01em; text-wrap: balance; }
 .mailrow { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .mail { font: 500 clamp(16px, 2.4vw, 22px)/1.3 var(--mono); color: var(--accent-soft); user-select: all; overflow-wrap: anywhere; }
 .copy { cursor: pointer; }
-footer { padding-block: 24px 40px; color: var(--muted); font-size: 13px; display: flex; gap: 16px; flex-wrap: wrap; justify-content: space-between; }
 
 .error { margin: 80px auto; max-width: 620px; padding: 24px; border: 1px solid var(--accent); border-radius: var(--radius); background: var(--surface); }
 .error code { font-family: var(--mono); color: var(--accent-soft); }
@@ -225,6 +241,7 @@ footer { padding-block: 24px 40px; color: var(--muted); font-size: 13px; display
     const p = d.profile || {};
     const projects = list(d.projects);
     const jobs = list(d.experience);
+    const favs = list(d.favourites).filter(g => g && g.title);
     const groups = [];
     projects.forEach(x => {
       const key = x.studio || "Other";
@@ -238,7 +255,7 @@ footer { padding-block: 24px 40px; color: var(--muted); font-size: 13px; display
 <header class="top"><div class="wrap">
   <a class="brand" href="#top">${esc(p.name)}<span>.</span></a>
   <nav class="nav" aria-label="Sections">
-    <a href="#projects">Projects</a><a href="#about">About</a><a href="#contact">Contact</a>
+    <a href="#projects">Projects</a><a href="#about">About</a>${favs.length ? `<a href="#favourites">Favourites</a>` : ""}<a href="#contact">Contact</a>
   </nav>
   <div class="dl-group">${dlBtns(d.downloads, true)}</div>
 </div></header>
@@ -291,6 +308,24 @@ footer { padding-block: 24px 40px; color: var(--muted); font-size: 13px; display
     </dl>
   </section>
 
+  ${favs.length ? `
+  <section class="wrap block" id="favourites">
+    <div class="sec-head"><h2>Favourite games</h2>${d.favourites_note ? `<p>${md(d.favourites_note)}</p>` : ""}</div>
+    <div class="spin" id="spin">
+      <div class="spin-bg" id="spinBg"></div>
+      <div class="spin-body">
+        <div class="spin-label" id="spinLabel">Feeling lucky?</div>
+        <h3 class="spin-title" id="spinTitle">Spin for one of my favourites</h3>
+        <p class="spin-quote" id="spinQuote"></p>
+        <div class="spin-actions">
+          <button class="btn primary" type="button" id="spinBtn">Spin</button>
+          <a class="btn" id="spinLink" href="#" target="_blank" rel="noopener" hidden><span id="spinLinkText">Steam</span> ${icon.out}</a>
+        </div>
+        <div class="sr" id="spinLive" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>` : ""}
+
   <section class="wrap contact" id="contact">
     <h2>${esc(p.contact_heading || "Want to connect? Awesome!")}</h2>
     ${p.email ? `<div class="mailrow"><span class="mail" id="mail">${esc(p.email)}</span>
@@ -309,8 +344,7 @@ footer { padding-block: 24px 40px; color: var(--muted); font-size: 13px; display
     </div>
   </div>
   <div class="viewer-pages" id="viewerPages" tabindex="0" aria-label="Document preview"></div>
-</dialog>
-<footer class="wrap"><span>© ${new Date().getFullYear()} ${esc(p.name)}</span><span>${esc(p.headline)}${p.location ? " · " + esc(p.location) : ""}</span></footer>`;
+</dialog>`;
     document.getElementById("app").innerHTML = html;
 
     // Resume / CV viewer
@@ -374,6 +408,61 @@ footer { padding-block: 24px 40px; color: var(--muted); font-size: 13px; display
     document.getElementById("viewerClose").addEventListener("click", closeViewer);
     dlg.addEventListener("click", e => { if (e.target === dlg) closeViewer(); });   // click outside
     dlg.addEventListener("close", () => { renderId++; pagesBox.innerHTML = ""; document.body.style.overflow = ""; });
+
+    // Favourite games: random pick with a short slot-machine roll
+    if (favs.length) {
+      // Art: an "image" in the YAML wins, otherwise Steam's capsule art from the app id
+      const art = g => g.image || (g.steam ? `https://cdn.akamai.steamstatic.com/steam/apps/${g.steam}/header.jpg` : "");
+      favs.forEach(g => { const u = art(g); if (u) new Image().src = u; });   // preload so the roll is smooth
+      const box = document.getElementById("spin"), bg = document.getElementById("spinBg");
+      const label = document.getElementById("spinLabel"), title = document.getElementById("spinTitle");
+      const quote = document.getElementById("spinQuote"), go = document.getElementById("spinBtn");
+      const link = document.getElementById("spinLink"), live = document.getElementById("spinLive");
+      const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let cur = -1, busy = false;
+      const show = (i, done) => {
+        const g = favs[i], u = art(g);
+        bg.style.backgroundImage = u ? `url("${u}")` : "";
+        bg.classList.toggle("on", !!u);
+        title.textContent = g.title;
+        quote.textContent = done ? (g.quote || "") : "";
+        if (done) {
+          label.textContent = "Favourite game";
+          const url = g.link || (g.steam ? `https://store.steampowered.com/app/${g.steam}` : "");
+          if (url) { link.href = url; document.getElementById("spinLinkText").textContent = g.link_label || "Steam"; link.hidden = false; } else link.hidden = true;
+          live.textContent = `${g.title}. ${g.quote || ""}`;
+        } else { label.textContent = "Rolling…"; link.hidden = true; }
+      };
+      go.addEventListener("click", () => {
+        if (busy) return;
+        let final;
+        do { final = Math.floor(Math.random() * favs.length); } while (favs.length > 1 && final === cur);
+        const seq = [];
+        for (let k = 0; k < 10; k++) {
+          let n;
+          do { n = Math.floor(Math.random() * favs.length); } while (favs.length > 1 && n === (seq[k - 1] ?? cur));
+          seq.push(n);
+        }
+        if (favs.length > 1 && seq[seq.length - 1] === final) seq.pop();
+        seq.push(final);
+        const finish = () => {
+          cur = final; busy = false; go.disabled = false; go.textContent = "Spin again";
+          box.classList.remove("rolling"); box.classList.remove("landed"); void box.offsetWidth;
+          box.classList.add("landed");
+          show(final, true);
+        };
+        if (still || favs.length === 1) return finish();
+        busy = true; go.disabled = true; box.classList.remove("landed"); box.classList.add("rolling");
+        let step = 0;
+        const tick = () => {
+          if (step >= seq.length - 1) return finish();
+          show(seq[step], false);
+          step++;
+          setTimeout(tick, 55);   // same quick speed all the way, no slowing down
+        };
+        tick();
+      });
+    }
 
     const btn = document.getElementById("copyMail");
     if (btn) btn.addEventListener("click", () => {
