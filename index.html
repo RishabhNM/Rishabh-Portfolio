@@ -9,18 +9,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Lato:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: one centred column (max 1080px). Top bar, intro (name, stats, links),
-   projects in one panel per company, about (label/content rows), contact.
-   All content comes from site.yaml. */
 :root {
-  --bg: #11141B;          /* ink navy, the resume's navy pushed dark */
-  --surface: #181C25;     /* cards */
-  --surface-2: #1F2430;   /* hover, chips */
-  --line: #2A303D;        /* hairlines */
-  --fg: #ECE8E4;          /* warm off-white text */
-  --muted: #9EA4B0;       /* secondary text */
-  --accent: #E38B73;      /* terracotta, lifted for dark */
-  --accent-soft: #EBA897; /* peach */
+  --bg: #11141B;
+  --surface: #181C25;
+  --surface-2: #1F2430;
+  --line: #2A303D;
+  --fg: #ECE8E4;
+  --muted: #9EA4B0;
+  --accent: #E38B73;
+  --accent-soft: #EBA897;
   --on-accent: #1A1210;
   --display: "Poppins", "Segoe UI", system-ui, sans-serif;
   --body: "Lato", "Segoe UI", system-ui, sans-serif;
@@ -93,7 +90,7 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); scroll-m
 .sec-head h2::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); }
 .sec-head p { margin: 0; color: var(--muted); font-size: 14px; }
 
-/* Projects, one panel per company */
+/* Projects */
 .companies { display: grid; gap: 20px; }
 .company { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
 .company-head {
@@ -153,14 +150,14 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); scroll-m
   .hide-sm { display: none; }
 }
 
-/* Favourites */
+/* Stars */
 .star { width: 16px; height: 16px; color: var(--accent); flex: none; align-self: center; }
 .proj-note { margin: -8px 0 24px; color: var(--muted); font-size: 15px; }
 .proj-note .star { display: inline-block; width: 17px; height: 17px; vertical-align: -3px; margin: 0 1px; }
 .row.fav { background: color-mix(in srgb, var(--accent) 6%, transparent); box-shadow: inset 3px 0 0 var(--accent); }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* Favourite games: random pick card, Steam capsule art as the background */
+/* Favourite games */
 .spin { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); min-height: 320px; display: flex; }
 .spin-bg { position: absolute; inset: 0; background: center / cover no-repeat; opacity: 0; transform: scale(1.04); transition: opacity .15s; }
 .spin-bg.on { opacity: .6; }
@@ -177,7 +174,7 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); scroll-m
 @keyframes land { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
 @media (max-width: 560px) { .spin { min-height: 300px; } .spin-body { padding: 20px; } }
 
-/* About: a lead paragraph, then label / content rows */
+/* About */
 .about-lead { margin: 0 0 40px; max-width: 60ch; font-size: clamp(18px, 2vw, 21px); line-height: 1.65; color: var(--fg); }
 .about-lead strong { color: var(--accent-soft); }
 .facts { margin: 0; display: grid; }
@@ -409,11 +406,10 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); scroll-m
     dlg.addEventListener("click", e => { if (e.target === dlg) closeViewer(); });   // click outside
     dlg.addEventListener("close", () => { renderId++; pagesBox.innerHTML = ""; document.body.style.overflow = ""; });
 
-    // Favourite games: random pick with a short slot-machine roll
+    // Favourite games
     if (favs.length) {
-      // Art: an "image" in the YAML wins, otherwise Steam's capsule art from the app id
       const art = g => g.image || (g.steam ? `https://cdn.akamai.steamstatic.com/steam/apps/${g.steam}/header.jpg` : "");
-      favs.forEach(g => { const u = art(g); if (u) new Image().src = u; });   // preload so the roll is smooth
+      favs.forEach(g => { const u = art(g); if (u) new Image().src = u; });
       const box = document.getElementById("spin"), bg = document.getElementById("spinBg");
       const label = document.getElementById("spinLabel"), title = document.getElementById("spinTitle");
       const quote = document.getElementById("spinQuote"), go = document.getElementById("spinBtn");

@@ -1,24 +1,9 @@
-# ============================================================
-# Rishabh Gupta - portfolio website content
-# ------------------------------------------------------------
-# Everything you see on the site comes from this file.
-# Edit, save, refresh the page.
-#
-#   - Text goes in quotes. **double stars** = bold. [text](https://link) = a link.
-#   - Each "- " starts a new item. Keep the indentation (spaces, not tabs).
-#   - Delete a line (or put # in front of it) to hide it.
-#   - Leave a link as "" to hide its button.
-#   - Images: put the file in the "images" folder and write  image: images/name.png
-# ============================================================
-
 profile:
   name: Rishabh Gupta
   headline: Technical Game Designer
   location: MP, India
   email: rishabh.bansal1598@gmail.com
-  # Heading of the contact section at the bottom
   contact_heading: "Want to connect? Awesome!"
-  # phone: "+91 96304 60469"        # remove the # to show your number on the site
   about: "Game Designer with nearly 4 years of experience across 10+ shipped titles. My technical knowledge of C# and the Unity Engine helps me quickly prototype my ideas and test them with the team early on. I've worked directly with clients and publishers, and many of those relationships turned into repeat work. In a team, I like being direct and clear with feedback, and I'm always happy to get the same in return."
   links:
     - label: LinkedIn
@@ -26,7 +11,6 @@ profile:
     - label: itch.io
       url: https://rishabhg099.itch.io
 
-# Small numbers right under your name
 stats:
   - value: "4"
     label: years designing games
@@ -35,23 +19,10 @@ stats:
   - value: "15+"
     label: client games
 
-# Download buttons. Replace the PDFs in the "files" folder when you update them
-# (keep the same file names, or change them here).
 downloads:
   - label: Resume
     file: files/Rishabh_Gupta_Resume.pdf
 
-# ------------------------------------------------------------
-# FAVOURITE GAMES  (the "Spin" card under Projects)
-#   title      -> game name
-#   quote      -> your line about it
-#   steam      -> the Steam app id (the number in store.steampowered.com/app/NUMBER/).
-#                 It gives the background art and a "Steam" button.
-#   image      -> optional. Use your own art instead, e.g. images/game.jpg
-#   link       -> optional. A different store page (for games not on Steam)
-#   link_label -> optional. Text on that button, e.g. Nintendo
-# Delete the whole "favourites" list to hide the section.
-# ------------------------------------------------------------
 favourites_note: "Games tell a lot about a person. Here are some of my favourites!"
 favourites:
   - title: Balatro
@@ -87,19 +58,8 @@ skills:
 
 projects_subtitle: ""
 
-# Line shown at the start of the Projects section ({star} becomes the star icon)
 projects_note: "Projects marked with {star} showcase a strong part of my skill set."
 
-# ------------------------------------------------------------
-# PROJECTS
-#   star: true -> marks the project as a favourite (star icon + highlight)
-#   studio  -> which company box the project goes in. The box shows your role and
-#              dates from the matching company under "experience" below.
-#   note    -> optional extra line
-#   kpis    -> optional test numbers, shown as small chips
-#   links   -> one button per link (Google Play, App Store, itch.io, ...)
-# Projects show in the same order as written here.
-# ------------------------------------------------------------
 projects:
   - title: "Cozy Words: Word Trivia"
     star: true
@@ -161,7 +121,7 @@ projects:
     role: Systems Design, Economy Balancing
     links:
       - label: Google Play
-        url: ""        # TODO: add the store link
+        url: ""
   - title: Human Run
     studio: Funcell Games
     genre: Arcade
@@ -263,11 +223,6 @@ projects:
       - label: Play on itch.io
         url: https://veekshith-k.itch.io/cubos-confines
 
-# ------------------------------------------------------------
-# COMPANIES
-#   Not shown as its own section. Each company's role and dates appear in the
-#   header of its box under Projects (matched by the company name = "studio").
-# ------------------------------------------------------------
 experience:
   - company: Nearmint Studios
     role: Technical Game Designer
@@ -297,9 +252,6 @@ education:
     school: Backstage Pass Institute of Gaming and Technology
     dates: 2019 - 2023
 
-# ------------------------------------------------------------
-# BEYOND WORK
-# ------------------------------------------------------------
 achievements:
   - "Grew a gaming YouTube channel (**BhaiLogKaAdda**) to **700k+ subscribers**, which gave me deep insight into player behavior and what makes games shareable."
   - "Co-hosted **The Game Awards 2021** in India."
