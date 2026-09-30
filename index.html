@@ -158,6 +158,8 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); scroll-m
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* Favourite games */
+.favs { padding-bottom: 56px; }
+.fav-note { margin: 0 0 20px; font-size: clamp(18px, 2vw, 21px); line-height: 1.65; color: var(--fg); }
 .spin { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); min-height: 320px; display: flex; }
 .spin-bg { position: absolute; inset: 0; background: center / cover no-repeat; opacity: 0; transform: scale(1.04); transition: opacity .15s; }
 .spin-bg.on { opacity: .6; }
@@ -252,7 +254,7 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); scroll-m
 <header class="top"><div class="wrap">
   <a class="brand" href="#top">${esc(p.name)}<span>.</span></a>
   <nav class="nav" aria-label="Sections">
-    <a href="#projects">Projects</a><a href="#about">About</a>${favs.length ? `<a href="#favourites">Favourites</a>` : ""}<a href="#contact">Contact</a>
+    <a href="#projects">Projects</a><a href="#about">About</a><a href="#contact">Contact</a>
   </nav>
   <div class="dl-group">${dlBtns(d.downloads, true)}</div>
 </div></header>
@@ -306,8 +308,8 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); scroll-m
   </section>
 
   ${favs.length ? `
-  <section class="wrap block" id="favourites">
-    <div class="sec-head"><h2>Favourite games</h2>${d.favourites_note ? `<p>${md(d.favourites_note)}</p>` : ""}</div>
+  <section class="wrap favs" id="favourites">
+    ${d.favourites_note ? `<p class="fav-note">${md(d.favourites_note)}</p>` : ""}
     <div class="spin" id="spin">
       <div class="spin-bg" id="spinBg"></div>
       <div class="spin-body">
