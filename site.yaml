@@ -20,7 +20,7 @@ stats:
     label: client games
 
 intro_clicks: ["CLICK ME", "CLICK ME AGAIN!", "AGAIN AGAIN!", "AGAINNNNNNNNN!"]
-intro_end: "that's it... i'm not too interesting... please proceed with scrolling down"
+intro_end: "erm...that's it..."
 
 downloads:
   - label: Resume
@@ -135,7 +135,7 @@ projects:
     genre: Puzzle
     role: Game Design, UI Design
     note: |-
-      Ice Cream Connect! is a connect-the-dots game. Connect scoops of the same colour to serve your customers, but be quick, because customers have limited patience.
+      Ice Cream Connect! is a connect-the-dots game. Connect scoops of the same colour to serve your customers, ++but be quick++, because customers have limited patience.
 
       Built during a 4-week internal game jam. Attracted Voodoo's attention on release.
     details:

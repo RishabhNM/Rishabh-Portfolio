@@ -105,6 +105,11 @@ strong { color: var(--fg); font-weight: 700; }
 .stat-panel .stats li:not([hidden]) { animation: stat-in .5s ease-out both; }
 .click-me { min-height: 52px; padding: 12px 28px; font-size: 16px; letter-spacing: .04em; background: var(--accent); border-color: var(--accent); color: var(--on-accent); animation: toy-pulse 1.4s ease-in-out infinite; }
 .click-me[hidden] { display: none; }
+.click-me[data-level] { animation: click-shake var(--sp, .4s) linear infinite; }
+.click-me[data-level="1"] { --a: 2px; --r: 1deg; --sp: .42s; }
+.click-me[data-level="2"] { --a: 4.5px; --r: 2.6deg; --sp: .3s; }
+.click-me[data-level="3"] { --a: 9px; --r: 5.5deg; --sp: .18s; }
+@keyframes click-shake { 0%, 100% { transform: translate(0, 0) rotate(0); } 12% { transform: translate(calc(var(--a) * -1), calc(var(--a) * .6)) rotate(calc(var(--r) * -1)); } 25% { transform: translate(var(--a), calc(var(--a) * -.8)) rotate(var(--r)); } 38% { transform: translate(calc(var(--a) * -.7), calc(var(--a) * -.9)) rotate(calc(var(--r) * -.8)); } 50% { transform: translate(calc(var(--a) * .9), calc(var(--a) * .7)) rotate(calc(var(--r) * .9)); } 62% { transform: translate(calc(var(--a) * -1), calc(var(--a) * -.4)) rotate(calc(var(--r) * -1)); } 75% { transform: translate(calc(var(--a) * .6), calc(var(--a) * .9)) rotate(calc(var(--r) * .7)); } 88% { transform: translate(calc(var(--a) * -.5), calc(var(--a) * -.6)) rotate(calc(var(--r) * -.6)); } }
 .click-me:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
 .click-end { margin: 0; max-width: 70ch; text-align: center; color: var(--muted); font-style: italic; font-size: 16px; animation: stat-in .6s ease-out both; }
 .click-end .ew { display: inline-block; white-space: nowrap; }
@@ -178,6 +183,8 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 .meteor { position: absolute; left: 0; top: 0; width: 96px; height: 2px; border-radius: 2px; transform-origin: 0 50%; background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,.55) 35%, rgba(255,255,255,0) 100%); opacity: 0; animation: meteor-fall var(--t, 1.1s) cubic-bezier(.4, 0, .8, .6) forwards; }
 .meteor::before { content: ""; position: absolute; left: -1px; top: -1px; width: 4px; height: 4px; border-radius: 50%; background: #fff; }
 @keyframes meteor-fall { 0% { opacity: 0; transform: translate(var(--sx), var(--sy)) rotate(var(--a)); } 12% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--ex), var(--ey)) rotate(var(--a)); } }
+.hurry { display: inline-block; margin: 0 .2em 0 .35em; font-weight: 700; font-style: italic; color: #FF8A3D; -webkit-text-fill-color: currentColor; text-shadow: -4px 0 0 rgba(255,138,61,.3), -8px 0 0 rgba(255,138,61,.12); animation: hurry-dash .55s linear infinite; }
+@keyframes hurry-dash { 0%, 100% { transform: skewX(-8deg) translateX(0); color: #FF8A3D; } 25% { transform: skewX(-14deg) translateX(3px); color: #FF3D6E; } 50% { transform: skewX(-8deg) translateX(0); color: #FF8A3D; } 75% { transform: skewX(-14deg) translateX(-2px); color: #FF3D6E; } }
 .f-details strong { color: var(--fg); }
 .f-meta ul { font-size: 15px; }
 .f-text p.credit { margin: 0 0 14px; font: 500 12px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
@@ -372,6 +379,7 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
     .replace(/\$\$(.+?)\$\$/g, '<span class="shine">$1</span>')
     .replace(/@@(.+?)@@/g, '<span class="spring">$1</span>')
     .replace(/##(.+?)##/g, '<span class="aura">$1</span>')
+    .replace(/\+\+(.+?)\+\+/g, '<span class="hurry">$1</span>')
     .replace(/!!(.+?)!!/g, '<span class="pulse">$1</span>')
     .replace(/::(.+?)::/g, '<span class="muted-text">$1</span>')
     .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
@@ -629,12 +637,12 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
       else start();
     });
 
-    // Small balls ricocheting around a project panel, like the DVD logo; click to add more (up to 5)
+    // Small balls ricocheting around a project panel, like the DVD logo; click to add more (up to 15)
     if (!calm) document.querySelectorAll(".feature[data-ball]").forEach(card => {
       const layer = document.createElement("div");
       layer.className = "ball-layer";
       card.prepend(layer);
-      const D = 12, speed = 240, MAX = 5;
+      const D = 12, speed = 240, MAX = 15;
       let W = card.clientWidth, H = card.clientHeight;
       const balls = [];
       const addBall = (x, y, keep) => {
@@ -893,6 +901,7 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
           panel.hidden = false;
           items[clicks].hidden = false;
           clicks++;
+          clickBtn.dataset.level = String(Math.min(clicks, 3));   // pulse at first, then shake harder with every press
           if (clicks < items.length) clickBtn.textContent = labels[clicks] || clickBtn.textContent;
           else clickBtn.textContent = labels[clicks] || "AGAIN?";
         } else {
