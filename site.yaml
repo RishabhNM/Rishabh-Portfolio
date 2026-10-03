@@ -56,7 +56,7 @@ skills:
   highlight: [Systems Design, KPI Analysis, Unity Engine]
   other: [C#, Economy Balancing, Design Documentation, "Analytics SDKs (Firebase, GameAnalytics)", Prototyping, UI Design, Figma]
 
-projects_subtitle: ""
+projects_subtitle: "A few of the projects I've worked on that best show what I'm good at."
 
 experience_heading: Complete work experience
 experience_blurb: "Every game I've worked on, grouped by company and the time I spent there."
@@ -114,7 +114,6 @@ projects:
     images:
       - images/crash-attack-1.jpg
       - images/crash-attack-2.jpg
-      - images/crash-attack-3.jpg
       - images/crash-attack-4.jpg
     links:
       - label: Google Play

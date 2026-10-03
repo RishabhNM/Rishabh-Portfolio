@@ -95,10 +95,13 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 .sec-head h2 { margin: 0; display: grid; gap: 14px; font: 700 clamp(36px, 6vw, 68px)/1.02 var(--display); letter-spacing: -.02em; color: var(--fg); }
 .sec-head h2 .num { font: 500 14px/1 var(--mono); letter-spacing: .14em; color: var(--accent); }
 .sec-head p { margin: 0; color: var(--muted); font-size: 15px; }
+#projects { padding-top: clamp(56px, 8vw, 96px); }
+.sec-sub { margin: calc(-1 * clamp(14px, 3vw, 36px)) 0 clamp(24px, 3.5vw, 36px); max-width: 58ch; color: var(--muted); font-size: clamp(17px, 1.9vw, 20px); line-height: 1.7; }
 
 /* Projects */
-.features { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(80px, 11vw, 140px); margin-bottom: clamp(88px, 12vw, 150px); }
-.feature { min-width: 0; }
+.features { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 4vw, 48px); margin-bottom: clamp(40px, 6vw, 72px); }
+.feature { min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: calc(var(--radius) + 6px); padding: clamp(22px, 4vw, 48px); }
+@media (hover: hover) { .feature { transition: border-color .2s; } .feature:hover { border-color: #3A4252; } }
 .f-head { display: grid; gap: 12px; padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid var(--line); }
 .f-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 18px; }
 .f-head h3 { margin: 0; font: 700 clamp(30px, 4.6vw, 52px)/1.08 var(--display); letter-spacing: -.015em; }
@@ -286,7 +289,8 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 
   ${featured.length ? `
   <section class="wrap block" id="projects">
-    <div class="sec-head"><h2><span class="num">01</span>Featured projects</h2>${d.projects_subtitle ? `<p>${md(d.projects_subtitle).replace("{count}", projects.length)}</p>` : ""}</div>
+    <div class="sec-head"><h2>Featured projects</h2></div>
+    ${d.projects_subtitle ? `<p class="sec-sub">${md(d.projects_subtitle)}</p>` : ""}
     ${featured.length ? `<div class="features">${featured.map(x => { const job = jobs.find(j => j.company === x.studio); return `
       <article class="feature">
         <header class="f-head">
@@ -316,7 +320,7 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
   </section>` : ""}
 
   <section class="wrap block" id="about">
-    <div class="sec-head"><h2><span class="num">02</span>About</h2></div>
+    <div class="sec-head"><h2>About</h2></div>
     ${p.about ? `<p class="about-lead">${md(p.about)}</p>` : ""}
     <dl class="facts">
       ${d.skills ? `<div class="fact"><dt>Skills</dt><dd><ul class="pills">${list(d.skills.highlight).map(s => `<li class="hi">${esc(s)}</li>`).join("")}${list(d.skills.other).map(s => `<li>${esc(s)}</li>`).join("")}</ul></dd></div>` : ""}
