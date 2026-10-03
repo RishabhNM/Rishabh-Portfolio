@@ -4,7 +4,7 @@ profile:
   location: MP, India
   email: rishabh.bansal1598@gmail.com
   contact_heading: "Want to connect? Awesome!"
-  about: "Game Designer with nearly 4 years of experience across 10+ shipped titles. My technical knowledge of C# and the Unity Engine helps me quickly prototype my ideas and test them with the team early on. I've worked directly with clients and publishers, and many of those relationships turned into repeat work. In a team, I like being direct and clear with feedback, and I'm always happy to get the same in return."
+  about: "Game Designer with nearly **4 years** of experience across **10+ shipped titles**. My technical knowledge of C# and the Unity Engine helps me quickly prototype my ideas and test them with the team early on. I've worked directly with **clients and publishers**, and many of those relationships turned into repeat work. In a team, I like being direct and clear with feedback, and I'm always happy to get the same in return."
   links:
     - label: LinkedIn
       url: https://linkedin.com/in/rishabhg099
@@ -18,6 +18,9 @@ stats:
     label: shipped titles
   - value: "15+"
     label: client games
+
+intro_clicks: ["CLICK ME", "CLICK ME AGAIN!", "AGAIN AGAIN!", "AGAINNNNNNNNN!"]
+intro_end: "that's it... i'm not too interesting... please proceed with scrolling down"
 
 downloads:
   - label: Resume

@@ -83,6 +83,9 @@ strong { color: var(--fg); font-weight: 700; }
 .eyebrow { font: 500 12px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-soft); display: flex; gap: 12px; flex-wrap: wrap; }
 .eyebrow span + span::before { content: "/"; margin-right: 12px; color: var(--line); }
 .intro h1 { margin: 0; font: 700 clamp(44px, 9vw, 104px)/1.0 var(--display); letter-spacing: -.01em; text-transform: uppercase; text-wrap: balance; }
+.intro h1 .nw { display: inline-block; white-space: nowrap; }
+.intro h1 .nl { transition: color .12s; }
+.intro h1 .nl.on { color: var(--accent); }
 .name-row { position: relative; width: fit-content; max-width: 100%; --d: clamp(52px, 7vw, 88px); margin-top: calc(var(--d) * 0.7); }
 .duck-track { position: absolute; left: 0; right: 0; bottom: 100%; height: 0; pointer-events: none; }
 .duck-walk { pointer-events: auto; cursor: pointer; -webkit-tap-highlight-color: transparent; position: absolute; left: 0; bottom: calc(var(--d) * -0.32); width: var(--d); animation: duck-walk 26s linear infinite; }
@@ -95,10 +98,23 @@ strong { color: var(--fg); font-weight: 700; }
 .headline .hl { display: inline-block; animation: hl-bounce 3.2s ease-in-out infinite; }
 @keyframes hl-bounce { 0%, 16%, 100% { transform: translateY(0); } 4% { transform: translateY(-.32em); } 9% { transform: translateY(0); } 12% { transform: translateY(-.1em); } }
 .loc { font: 500 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.intro-card { display: grid; gap: 28px; width: 100%; padding: clamp(22px, 3.5vw, 36px) clamp(22px, 4vw, 44px); background: var(--surface); border: 1px solid var(--line); border-radius: calc(var(--radius) + 6px); }
+.intro-card { display: grid; gap: 28px; width: fit-content; max-width: 100%; padding: clamp(18px, 3vw, 28px) clamp(22px, 4vw, 40px); background: var(--surface); border: 1px solid var(--line); border-radius: calc(var(--radius) + 6px); }
+.stat-zone { display: grid; gap: 22px; justify-items: center; text-align: center; width: 100%; margin-top: clamp(24px, 5vw, 56px); }
+.intro-card[hidden], .stats li[hidden], .click-end[hidden] { display: none; }
+.stat-panel:not([hidden]) { animation: panel-pop .45s cubic-bezier(.2, 1.3, .4, 1) both; transform-origin: 50% 100%; }
+.stat-panel .stats li:not([hidden]) { animation: stat-in .5s ease-out both; }
+.click-me { min-height: 52px; padding: 12px 28px; font-size: 16px; letter-spacing: .04em; background: var(--accent); border-color: var(--accent); color: var(--on-accent); animation: toy-pulse 1.4s ease-in-out infinite; }
+.click-me[hidden] { display: none; }
+.click-me:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
+.click-end { margin: 0; max-width: 70ch; text-align: center; color: var(--muted); font-style: italic; font-size: 16px; animation: stat-in .6s ease-out both; }
+.click-end .ew { display: inline-block; white-space: nowrap; }
+.click-end .ew span { display: inline-block; animation: end-wave 1.5s ease-in-out infinite; }
+@keyframes end-wave { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-.22em); } }
+@keyframes panel-pop { from { opacity: 0; transform: scale(.7) translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes stat-in { from { opacity: 0; transform: translateX(-12px) scale(.92); } to { opacity: 1; transform: none; } }
 .intro-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.stats { display: flex; flex-wrap: wrap; gap: 12px 40px; margin: 0; padding: 0; list-style: none; }
-.stats li { display: grid; gap: 2px; }
+.stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 44px; margin: 0; padding: 0; list-style: none; }
+.stats li { display: grid; gap: 2px; justify-items: center; }
 .stats b { font: 600 28px/1.1 var(--display); color: var(--fg); font-variant-numeric: tabular-nums; }
 .stats span { font-size: 14px; color: var(--muted); }
 
@@ -292,8 +308,8 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
   .proj-nav a.on::before { color: var(--accent); }
 }
 /* About */
-.about-lead { margin: 0 0 clamp(48px, 7vw, 80px); max-width: 60ch; font-size: clamp(19px, 2.2vw, 24px); line-height: 1.7; color: var(--fg); }
-.about-lead strong { color: var(--accent-soft); }
+.about-lead { margin: 0 0 clamp(48px, 7vw, 80px); max-width: none; font-size: clamp(15px, 1.4vw, 16.5px); line-height: 1.75; color: var(--fg); }
+.about-lead strong { color: var(--accent); }
 .facts { margin: 0; display: grid; }
 .fact { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 10px 40px; padding: 34px 0; border-top: 1px solid var(--line); }
 .fact:last-child { border-bottom: 1px solid var(--line); }
@@ -307,13 +323,13 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 .pills, .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
 .pills li { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); font-size: 14px; color: var(--fg); }
 .pills li.hi { background: var(--fg); color: var(--bg); border-color: var(--fg); font-weight: 700; }
-.tags li { font-size: 15px; color: var(--fg); }
+.tags li { font-size: clamp(15px, 1.4vw, 16.5px); color: var(--fg); }
 .tags li:not(:last-child)::after { content: "·"; color: var(--accent); margin-left: 8px; }
-.plain { margin: 0; padding-left: 18px; color: var(--fg); display: grid; gap: 10px; max-width: 70ch; }
+.plain { margin: 0; padding-left: 18px; color: var(--fg); display: grid; gap: 10px; max-width: 70ch; font-size: clamp(15px, 1.4vw, 16.5px); line-height: 1.7; }
 .plain li::marker { color: var(--accent); }
 .plain a { color: var(--accent-soft); }
 .edu { display: grid; gap: 4px; }
-.edu b { font: 600 17px/1.35 var(--display); }
+.edu b { font: 600 clamp(15px, 1.4vw, 16.5px)/1.35 var(--display); }
 .edu span { color: var(--muted); font-size: 14px; }
 
 /* Contact */
@@ -331,8 +347,6 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 .spin-bg { transition: opacity .15s, transform .25s ease-out; }
 @media (hover: hover) {
   .btn:hover { transform: translateY(-1px); }
-  .pills li { transition: border-color .2s, transform .2s; }
-  .pills li:hover { border-color: var(--accent); transform: translateY(-2px); }
   .spin:hover .spin-bg { transform: scale(1.08) translate(calc(var(--px, 0) * -12px), calc(var(--py, 0) * -8px)); }
 }
 
@@ -398,15 +412,19 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 
 <main id="top">
   <section class="wrap intro">
-    <div class="name-row"><h1>${esc(p.name)}</h1><div class="duck-track" aria-hidden="true"><div class="duck-walk"><img class="duck" src="images/duck.gif" alt="" width="256" height="256"></div></div></div>
+    <div class="name-row"><h1 aria-label="${esc(p.name)}">${String(p.name || "").split(" ").map(w => `<span class="nw" aria-hidden="true">${[...w].map(ch => `<span class="nl">${esc(ch)}</span>`).join("")}</span>`).join(" ")}</h1><div class="duck-track" aria-hidden="true"><div class="duck-walk"><img class="duck" src="images/duck.gif" alt="" width="256" height="256"></div></div></div>
     <div class="role-line"><p class="headline" aria-label="${esc(p.headline)}">${(() => { let n = 0; return String(p.headline || "").split(" ").map(w => `<span class="hw" aria-hidden="true">${[...w].map(ch => `<span class="hl" style="animation-delay:${(n++ * 0.07).toFixed(2)}s">${esc(ch)}</span>`).join("")}</span>`).join(" "); })()}</p>${p.location ? `<span class="loc">${esc(p.location)}</span>` : ""}</div>
-    <div class="intro-card">
-      ${list(d.stats).length ? `<ul class="stats">${list(d.stats).map(s => `<li><b>${esc(s.value)}</b><span>${esc(s.label)}</span></li>`).join("")}</ul>` : ""}
-      <div class="intro-row">
-        ${p.email ? `<a class="btn primary" href="#contact">Get in touch</a>` : ""}
-        ${linkBtns(p.links)}
-      </div>
+    <div class="intro-row">
+      ${p.email ? `<a class="btn primary" href="#contact">Get in touch</a>` : ""}
+      ${linkBtns(p.links)}
     </div>
+    ${list(d.stats).length ? `<div class="stat-zone">
+      <div class="intro-card stat-panel" id="statPanel" hidden>
+        <ul class="stats">${list(d.stats).map(s => `<li hidden><b>${esc(s.value)}</b><span>${esc(s.label)}</span></li>`).join("")}</ul>
+      </div>
+      <button class="btn click-me" type="button" id="clickMe">${esc(list(d.intro_clicks)[0] || "CLICK ME")}</button>
+      <p class="click-end" id="clickEnd" aria-label="${esc(d.intro_end || "")}" hidden>${(() => { let n = 0; return String(d.intro_end || "").split(" ").map(w => `<span class="ew" aria-hidden="true">${[...w].map(ch => `<span style="animation-delay:${(n++ * 0.07).toFixed(2)}s">${esc(ch)}</span>`).join("")}</span>`).join(" "); })()}</p>
+    </div>` : ""}
   </section>
 
   ${featured.length ? `
@@ -861,6 +879,48 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
     document.getElementById("lbClose").addEventListener("click", shut);
     lb.addEventListener("click", e => { if (e.target !== lbVid && e.target !== document.getElementById("lbClose")) shut(); });
     lb.addEventListener("close", tidy);
+
+    // Intro: CLICK ME reveals the stats one by one
+    const clickBtn = document.getElementById("clickMe");
+    if (clickBtn) {
+      const labels = list(d.intro_clicks);
+      const panel = document.getElementById("statPanel");
+      const items = [...panel.querySelectorAll("li")];
+      const endMsg = document.getElementById("clickEnd");
+      let clicks = 0;
+      clickBtn.addEventListener("click", () => {
+        if (clicks < items.length) {
+          panel.hidden = false;
+          items[clicks].hidden = false;
+          clicks++;
+          if (clicks < items.length) clickBtn.textContent = labels[clicks] || clickBtn.textContent;
+          else clickBtn.textContent = labels[clicks] || "AGAIN?";
+        } else {
+          clickBtn.hidden = true;
+          endMsg.hidden = false;
+        }
+      });
+    }
+
+    // The letter of the name the duck is walking on lights up in the accent color
+    (() => {
+      const walker = document.querySelector(".duck-walk");
+      const letters = [...document.querySelectorAll(".intro h1 .nl")];
+      if (!walker || !letters.length || calm) return;
+      let raf = 0, lit = null, vis = true;
+      const tick = () => {
+        const w = walker.getBoundingClientRect();
+        const cx = w.left + w.width / 2;
+        let hit = null;
+        for (const l of letters) { const r = l.getBoundingClientRect(); if (cx >= r.left && cx < r.right) { hit = l; break; } }
+        if (hit !== lit) { if (lit) lit.classList.remove("on"); if (hit) hit.classList.add("on"); lit = hit; }
+        raf = requestAnimationFrame(tick);
+      };
+      const run = () => { if (!raf) raf = requestAnimationFrame(tick); };
+      const halt = () => { cancelAnimationFrame(raf); raf = 0; if (lit) { lit.classList.remove("on"); lit = null; } };
+      if ("IntersectionObserver" in window) new IntersectionObserver(es => es.forEach(en => en.isIntersecting ? run() : halt())).observe(document.querySelector(".name-row"));
+      else run();
+    })();
 
     // Resume / CV viewer
     const dlg = document.getElementById("viewer");
