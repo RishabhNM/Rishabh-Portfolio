@@ -77,6 +77,11 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: clamp(36px, 6vw, 64px); }
 .sec-head h2 { margin: 0; display: grid; gap: 14px; font: 700 clamp(36px, 6vw, 68px)/1.02 var(--display); letter-spacing: -.02em; color: var(--fg); }
 .sec-head h2 .num { font: 500 14px/1 var(--mono); letter-spacing: .14em; color: var(--accent); }
+.sec-sub strong { color: var(--accent); font-weight: 700; }
+.juice { display: inline-block; font-weight: 700; transform-origin: 50% 90%; color: #ff8a3d; background: linear-gradient(90deg, #ff9f1c, #ff4d8d, #c04dff, #ff4d8d, #ff9f1c); background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: juice-flow 3s linear infinite, juice-jelly 1.5s ease-in-out infinite; }
+@keyframes juice-flow { to { background-position: -250% 0; } }
+@keyframes juice-jelly { 0%, 100% { transform: scale(1, 1); } 20% { transform: scale(1.12, .86) skewX(-3deg); } 45% { transform: scale(.93, 1.16) translateY(-.12em) skewX(3deg); } 70% { transform: scale(1.05, .95) skewX(-1.5deg); } }
+.sec-sub { margin: calc(-1 * clamp(14px, 3vw, 36px)) 0 clamp(28px, 4vw, 44px); max-width: 72ch; color: var(--muted); font-size: clamp(16px, 1.6vw, 18px); line-height: 1.75; }
 .sec-head p { margin: 0; color: var(--muted); font-size: 15px; }
 
 /* Experience */
@@ -91,6 +96,9 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 }
 .company-head h3 { margin: 0; font: 600 20px/1.25 var(--display); }
 .company-head h3 span { color: var(--accent); font-weight: 500; }
+.company-head h3 .desig .hw { display: inline-block; white-space: nowrap; }
+.company-head h3 .desig .hl { display: inline-block; animation: hl-bounce 3.2s ease-in-out infinite; }
+@keyframes hl-bounce { 0%, 16%, 100% { transform: translateY(0); } 4% { transform: translateY(-.32em); } 9% { transform: translateY(0); } 12% { transform: translateY(-.1em); } }
 .company-head .meta { font: 400 13px/1.4 var(--mono); color: var(--muted); display: flex; gap: 14px; flex-wrap: wrap; }
 .company-head .meta b { color: var(--accent-soft); font-weight: 500; }
 .rows { list-style: none; margin: 0; padding: 0; }
@@ -105,6 +113,9 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 .row .genre { font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-soft); background: color-mix(in srgb, var(--accent) 16%, transparent); padding: 5px 8px; border-radius: 999px; }
 .row .role { color: var(--fg); font-size: 14px; }
 .row .note { color: var(--muted); font-size: 14px; max-width: 70ch; }
+.games { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.games li { padding: 7px 13px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface-2); font-size: 14px; color: var(--fg); }
+.games li small { color: var(--muted); font-size: 12.5px; margin-left: 4px; }
 .kpi-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 2px; }
 .kpi { font: 500 12px/1 var(--mono); padding: 6px 9px; border-radius: 6px; border: 1px solid var(--line); color: var(--muted); font-variant-numeric: tabular-nums; }
 .kpi b { color: var(--accent-soft); font-weight: 500; margin-left: 4px; }
@@ -140,7 +151,8 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const md = s => esc(s)
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+    .replace(/==(.+?)==/g, '<span class="juice">$1</span>');
   const list = a => Array.isArray(a) ? a : [];
   const icon = {
     out: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5h5v5M19 5l-8 8M18 14v5H5V6h5"/></svg>'
@@ -154,7 +166,7 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
     const jobs = list(d.experience);
     // Companies in the order of the experience list, then any others (e.g. Game Jams)
     const groups = jobs.map(j => ({ name: j.company, job: j, items: [] }));
-    projects.forEach(x => {
+    projects.filter(x => x.in_experience !== false).forEach(x => {
       const key = x.studio || "Other";
       let g = groups.find(g => g.name === key);
       if (!g) groups.push(g = { name: key, items: [] });
@@ -172,17 +184,19 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 <main class="wrap page">
   <a class="back" href="index.html#projects">&larr; Back to featured projects</a>
   <div class="sec-head"><h2>${esc(d.experience_heading || "Work Experience")}</h2></div>
+  ${d.experience_intro ? `<p class="sec-sub">${md(d.experience_intro)}</p>` : ""}
   <div class="companies">${groups.filter(g => g.items.length).map(g => `
     <article class="company">
       <header class="company-head">
-        <h3>${esc(g.name)}${g.job ? ` <span>| ${esc(g.job.role)}</span>` : ""}</h3>
-        <div class="meta">${g.job ? `<span>${esc(g.job.dates)}</span>` : ""}<span><b>${g.items.length}</b> ${g.items.length === 1 ? "project" : "projects"}</span></div>
+        <h3>${esc(g.name)}${g.job ? ` <span class="desig" aria-label="${esc(g.job.role)}">|&nbsp;${(() => { let n = 0; return String(g.job.role).split(" ").map(w => `<span class="hw" aria-hidden="true">${[...w].map(ch => `<span class="hl" style="animation-delay:${(n++ * 0.07).toFixed(2)}s">${esc(ch)}</span>`).join("")}</span>`).join(" "); })()}</span>` : ""}</h3>
+        <div class="meta">${g.job ? `<span>${esc(g.job.dates)}</span>` : ""}</div>
       </header>
       <ul class="rows">${g.items.map(x => `
         <li class="row">
           <div class="t">
             <div class="name"><b>${esc(x.title)}</b>${x.genre ? `<span class="genre">${esc(x.genre)}</span>` : ""}</div>
-            ${x.role ? `<div class="role">${esc(x.role)}</div>` : ""}
+            ${(x.experience_role || x.role) ? `<div class="role">${esc(x.experience_role || x.role)}</div>` : ""}
+            ${list(x.games).length ? `<ul class="games">${list(x.games).map(g => `<li>${esc(g.name)}${g.note ? ` <small>${esc(g.note)}</small>` : ""}</li>`).join("")}</ul>` : ""}
           </div>
           <div class="links">${linkBtns(x.links)}</div>
         </li>`).join("")}

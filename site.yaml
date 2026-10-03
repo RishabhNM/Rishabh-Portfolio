@@ -63,6 +63,7 @@ projects_subtitle: "These projects show the best of my skills, from systems desi
 
 experience_heading: Work Experience
 experience_blurb: "Every game I've worked on, grouped by company and the time I spent there."
+experience_intro: "I've designed game systems at both **Funcell Games** and **Nearmint Studios**. I'm also confident in the Unity Engine, which helps me prototype quickly and communicate clearly with my team. I have a strong sense for ==game juice== too, and it's my favourite phase of development."
 
 projects:
   - title: "Cozy Words: Word Trivia"
@@ -154,6 +155,7 @@ projects:
 
   - title: Space Merge
     star: true
+    in_experience: false
     studio: Nearmint Studios
     genre: Puzzle, Merge
     role: Game Design, Systems Design, Unity Development
@@ -177,6 +179,7 @@ projects:
 
   - title: Peg Drop
     star: true
+    in_experience: false
     studio: Nearmint Studios
     genre: Arcade
     role: Game Design, Systems Design, Unity Development
@@ -200,8 +203,22 @@ projects:
   - title: Client Projects (15+ games)
     studio: Nearmint Studios
     genre: Puzzle, Arcade, Merge
-    role: Game Designer
+    role: Game Designer, Unity Developer
     note: "For clients like PlayOn (Papaya Stars) and JustPlay (Gimica Games), from brief to launch. Feel free to request more info."
+    games:
+      - name: Space Merge
+      - name: Peg Drop
+      - name: Cookie Eraser
+        note: Squid Game style mini-game
+      - name: Doodle Jump
+      - name: Fruit Merge
+      - name: Memory Match
+        note: card matching game
+      - name: Ping Pong
+      - name: Pitch Perfect
+        note: Tiktok style pitch based game
+      - name: Color Switch
+      - name: Sand Tetris
     links: []
 
   - title: Idle Car Showroom
@@ -288,6 +305,7 @@ projects:
     spin_word: yo-yo
     toy_button: "Start Spinnin'"
     role: Game Designer, Systems Designer, Economy Balance, Everything... basically
+    experience_role: Game Designer, Systems Designer, Economy Balance
     note: |-
       I Ended A 100-Year War By Spinning A Yo-Yo!, or !!IEA100YWBSAY!! for short ::(which isn't really short, is it?)::, is a tower defence roguelite. Defend the kingdom by spinning your trusty yo-yo, and get upgrades as you beat waves of enemies to power it up.
     details:
