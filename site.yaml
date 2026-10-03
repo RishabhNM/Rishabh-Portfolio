@@ -56,7 +56,7 @@ skills:
   highlight: [Systems Design, KPI Analysis, Unity Engine]
   other: [C#, Economy Balancing, Design Documentation, "Analytics SDKs (Firebase, GameAnalytics)", Prototyping, UI Design, Figma]
 
-projects_subtitle: "A few of the projects I've worked on that best show what I'm good at."
+projects_subtitle: "These projects show the best of my skills, from systems design to working code."
 
 experience_heading: Work Experience
 experience_blurb: "Every game I've worked on, grouped by company and the time I spent there."
@@ -77,6 +77,10 @@ projects:
       - label: D7
         value: "5%"
     kpi_note: First test with HitApps (US)
+    details:
+      - "**Tile Grid System:** Players can tap anywhere on the grid to build words, which means a lot of RNG. The letter spawn rates were tuned so short words are easy to find, but the grid still offers useful letters for longer ones."
+      - "**Objective Phrase:** Every word you make reveals the matching letters in the phrase, so the words you build directly drive your progress."
+      - "**==Mystery Tile==:** A word with no letters for the phrase would be wasted. Those extra tiles now count toward unlocking a ==Mystery Tile==, which reveals a random hidden letter."
     clips:
       - src: images/cozy-words-clip.mp4
         ratio: 360/640
@@ -106,6 +110,11 @@ projects:
       - label: Playtime
         value: "30 min"
     kpi_note: Tested with Voodoo
+    bouncing_ball: true
+    details:
+      - "**Math Gates:** After prototyping the base loop of launching balls to break blocks, we tested math gates to make levels more meaningful and push players to find better angles around the blocks. It made for ~~chaotic~~ gameplay that players loved."
+      - "**Bomb Blocks:** Breaking every block one by one felt painstaking in early tests, so we added bomb blocks that damage the blocks around them. It improved the game flow, added great juice and fueled the ~~chaos~~."
+      - "**Card Upgrades:** Beyond the meta progression, in-level upgrades intrigued us. The gameplay allowed for a lot of unique upgrades, and we added more ^^legendary^^ ones to the pool as the player progressed."
     clips:
       - src: images/crash-attack-clip.mp4
         ratio: 512/640
@@ -126,6 +135,8 @@ projects:
       Ice Cream Connect! is a connect-the-dots game. Connect scoops of the same colour to serve your customers, but be quick, because customers have limited patience.
 
       Built during a 4-week internal game jam. Attracted Voodoo's attention on release.
+    details:
+      - "**Customer Patience:** We liked the idea of a serve-the-customers layer on top of the connect-the-dots gameplay. It made the gameplay driven, with a constantly changing objective."
     clips:
       - src: images/ice-cream-connect-clip.mp4
         ratio: 288/640
@@ -143,10 +154,15 @@ projects:
     studio: Nearmint Studios
     genre: Puzzle, Merge
     role: Game Design, Systems Design, Unity Development
+    credit: Made for JustPlay by Gimica Games
+    meteors: true
+    stars: true
     note: |-
       Drop planets into a small gravity pocket, and two similar planets merge into a bigger one. Can you merge your way up to the sun?
-
-      Space Merge started as a twist on the popular Suika game. Making the planets feel satisfying to drop in a central gravity field was a fun challenge, and it took a lot of tuning. The planets had to feel light, but heavy enough that small ones wedge into small gaps and merge easily, which keeps the gameplay flowing.
+    details:
+      - "**Central Gravity:** This system took the most tuning in the game, and it's what makes it stand out from the usual Suika-likes. We tuned the gravity falloff through the field radius, and added a @@spring force@@ at the center so planets settle instead of swinging back and forth through it. The %%wavy%% feel of the gravity field was also fun to get right, and it gives great feedback to player actions."
+      - "**Planet Feel:** The planets had to feel light, but heavy enough that small ones wedge into small gaps and merge easily, which keeps the gameplay flowing."
+      - "**Little Character Dude:** Canonically named.... $$Mike$$... yeah I dunno... He's a dynamic element on the screen that constantly reacts to the player, with random dialogue for moments like discovering a new planet, beating your high score, unlocking the sun or failing."
     clips:
       - src: images/space-merge-clip.mp4
         ratio: 720/900
@@ -161,10 +177,14 @@ projects:
     studio: Nearmint Studios
     genre: Arcade
     role: Game Design, Systems Design, Unity Development
+    credit: Made for PlayOn by Papaya Stars
+    ripple: "#bafd4d"
     note: |-
       Shoot balls onto pegs to bounce around and destroy them. Hit as many pegs as you can to build a crazy score multiplier, and touch special pegs to activate powerups!
-
-      Balancing the ball physics to get as many peg hits as possible took a lot of fine tuning. The juice was a lot of fun to work on: the pegs react to every hit, and the character on top reacts to your actions.
+    details:
+      - "**Ball Physics:** Balancing the ball physics to get as many peg hits as possible took a lot of fine tuning."
+      - "**Special Powerups:** Blue pegs activate ##powerups##, giving the player 2 options to choose from. Each layout features around 4-5 blue pegs, which keeps the level flowing and lets players make good use of their limited balls."
+      - "**Extra Ball:** Hitting enough pegs rewards an extra ball, which rewards smart play. This works great for the platform, since it was all about rewarding skill."
     clips:
       - src: images/peg-drop-clip.mp4
         ratio: 9/16
@@ -262,11 +282,14 @@ projects:
     star: true
     studio: Game Jams
     genre: Tower Defence
-    role: Game Designer, Systems Designer, Economy Balance
+    spin_word: yo-yo
+    toy_button: "Start Spinnin'"
+    role: Game Designer, Systems Designer, Economy Balance, Everything... basically
     note: |-
-      I Ended A 100-Year War By Spinning A Yo-Yo!, or IEA100YWBSAY for short (which isn't really short, is it?), is a tower defence roguelite. Defend the kingdom by spinning your trusty yo-yo, and get upgrades as you beat waves of enemies to power it up.
-
-      This game was made in 4 days for a game jam. I challenged myself to design and balance the economy to fit a set playtime of about 15-20 minutes.
+      I Ended A 100-Year War By Spinning A Yo-Yo!, or !!IEA100YWBSAY!! for short ::(which isn't really short, is it?)::, is a tower defence roguelite. Defend the kingdom by spinning your trusty yo-yo, and get upgrades as you beat waves of enemies to power it up.
+    details:
+      - "**Systems Design:** A tower defence roguelite, made as a great test of my skills in economy balance and systems design. I came up with the yo-yo types, unique upgrades for the yo-yos and enemy behaviour in a short span of time."
+      - "**Economy Balance:** Balancing the economy was the main challenge. I targeted around 15-20 minutes of playtime to finish the game, but there wasn't enough time to test it in the 4 days of development. It turned out great, mostly from my hunch, and players were happy with the game flow."
     clips:
       - src: images/yoyo-war-clip-1.mp4
         ratio: 640/360
