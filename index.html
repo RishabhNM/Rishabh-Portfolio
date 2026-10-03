@@ -115,10 +115,9 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 .feature { min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: calc(var(--radius) + 6px); padding: clamp(22px, 4vw, 48px); }
 @media (hover: hover) { .feature { transition: border-color .2s; } .feature:hover { border-color: #3A4252; } }
 .f-head { display: grid; gap: 12px; padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid var(--line); }
-.f-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 18px; }
 .f-head h3 { margin: 0; font: 700 clamp(30px, 4.6vw, 52px)/1.08 var(--display); letter-spacing: -.015em; }
-.f-top .genre { font: 500 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-soft); }
-.f-studio { color: var(--muted); font-size: 15px; }
+.f-genres { display: flex; flex-wrap: wrap; gap: 8px; }
+.f-genres .genre { font: 500 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-soft); background: color-mix(in srgb, var(--accent) 16%, transparent); padding: 7px 12px; border-radius: 999px; }
 .f-body { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 36px clamp(32px, 6vw, 80px); align-items: start; }
 .f-text p { margin: 0 0 24px; font-size: clamp(17px, 1.7vw, 19px); line-height: 1.8; max-width: 58ch; }
 .f-meta h4 { margin: 0 0 14px; font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent-soft); }
@@ -140,7 +139,8 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 .lightbox { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: var(--fg); }
 .lightbox[open] { display: grid; place-items: center; }
 .lightbox::backdrop { background: rgba(6, 8, 12, .86); backdrop-filter: blur(4px); }
-.lightbox img { max-width: min(94vw, 1100px); max-height: 90dvh; width: auto; height: auto; border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 12px 48px rgba(0,0,0,.6); }
+.lightbox img, .lightbox video { max-width: min(94vw, 1100px); max-height: 90dvh; width: auto; height: auto; border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 12px 48px rgba(0,0,0,.6); }
+.lightbox img[hidden], .lightbox video[hidden] { display: none; }
 .lightbox .lb-close { position: fixed; top: 16px; right: 16px; }
 .shots img { flex: none; height: 300px; width: auto; border-radius: 12px; border: 1px solid var(--line); background: var(--surface-2); scroll-snap-align: start; }
 .shots.fit { display: grid; grid-template-columns: repeat(var(--n, 2), minmax(0, 1fr)); overflow: visible; align-items: start; }
@@ -155,6 +155,8 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 .kpi-note { font: 400 12px/1.4 var(--mono); color: var(--muted); margin-left: 4px; }
 .links { display: flex; flex-wrap: wrap; gap: 8px; }
 .more-exp { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; padding: clamp(24px, 4vw, 40px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.more-exp-text { display: flex; align-items: center; gap: 20px; min-width: 0; }
+.work-gif { flex: none; width: clamp(96px, 13vw, 140px); height: auto; }
 .more-exp h3 { margin: 0 0 8px; font: 700 clamp(24px, 3.4vw, 34px)/1.15 var(--display); letter-spacing: -.01em; }
 .more-exp p { margin: 0; color: var(--muted); font-size: 15px; max-width: 56ch; }
 .more-exp .btn { min-height: 46px; padding: 10px 20px; font-size: 15px; }
@@ -292,7 +294,6 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
   function render(d) {
     const p = d.profile || {};
     const projects = list(d.projects);
-    const jobs = list(d.experience);
     const favs = list(d.favourites).filter(g => g && g.title);
     const featured = projects.filter(x => x.star);
     document.title = `${p.name ? p.name + " " : ""}Portfolio`;
@@ -323,12 +324,11 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
   <section class="wrap block" id="projects">
     <div class="sec-head"><h2 class="idx"><span>01</span> Featured projects</h2></div>
     ${d.projects_subtitle ? `<p class="sec-sub">${md(d.projects_subtitle)}</p>` : ""}
-    ${featured.length ? `<div class="features">${featured.map(x => { const job = jobs.find(j => j.company === x.studio); return `
+    ${featured.length ? `<div class="features">${featured.map(x => { return `
       <article class="feature">
         <header class="f-head">
-          ${x.genre ? `<div class="f-top"><span class="genre">${esc(x.genre)}</span></div>` : ""}
           <h3>${esc(x.title)}</h3>
-          <div class="f-studio">${esc(x.studio || "")}${job ? ` · ${esc(job.dates)}` : ""}</div>
+          ${x.genre ? `<div class="f-genres">${String(x.genre).split(",").map(g => `<span class="genre">${esc(g.trim())}</span>`).join("")}</div>` : ""}
         </header>
         <div class="f-body">
           <div class="f-text">
@@ -340,12 +340,15 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
             <div class="links">${linkBtns(x.links)}</div>
           </div>
         </div>
-        ${ytId(x.video) || list(x.images).length || list(x.clips).length ? `<div class="shots${x.fit ? " fit" : ""}"${x.fit ? ` style="--n:${list(x.clips).length + (ytId(x.video) ? 1 : 0) + list(x.images).length}"` : ""}>${list(x.clips).map(c => { c = typeof c === "string" ? { src: c } : (c || {}); return c.src ? `<div class="clip"${/^\d+(\.\d+)?\s*[\/:]\s*\d+(\.\d+)?$/.test(String(c.ratio || "")) ? ` style="aspect-ratio:${esc(String(c.ratio).replace(":", "/"))}"` : ""}><video src="${esc(c.src)}" muted loop autoplay playsinline preload="metadata" aria-label="${esc(x.title)} gameplay clip"></video>${/^https?:\/\//.test(String(c.link || "")) ? `<a class="video-link" href="${esc(c.link)}" target="_blank" rel="noopener" aria-label="Watch ${esc(x.title)} on YouTube">YouTube ${icon.out}</a>` : ""}</div>` : ""; }).join("")}${ytId(x.video) ? `<div class="video"${/^\d+(\.\d+)?\s*[\/:]\s*\d+(\.\d+)?$/.test(String(x.video_ratio || "")) ? ` style="aspect-ratio:${esc(String(x.video_ratio).replace(":", "/"))}"` : ""}><iframe src="https://www.youtube-nocookie.com/embed/${ytId(x.video)}?autoplay=1&mute=1&loop=1&playlist=${ytId(x.video)}&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&fs=0" title="${esc(x.title)} video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe><a class="video-link" href="https://www.youtube.com/watch?v=${ytId(x.video)}" target="_blank" rel="noopener" aria-label="Watch ${esc(x.title)} on YouTube">YouTube ${icon.out}</a></div>` : ""}${list(x.images).map((src, n) => `<div class="shot"><img src="${esc(src)}" alt="${esc(x.title)} screenshot ${n + 1}" loading="lazy"><button class="enlarge" type="button" data-full="${esc(src)}" data-alt="${esc(x.title)} screenshot ${n + 1}" aria-label="Enlarge ${esc(x.title)} screenshot ${n + 1}">${icon.zoom}</button></div>`).join("")}</div>` : ""}
+        ${ytId(x.video) || list(x.images).length || list(x.clips).length ? `<div class="shots${x.fit ? " fit" : ""}"${x.fit ? ` style="--n:${list(x.clips).length + (ytId(x.video) ? 1 : 0) + list(x.images).length}"` : ""}>${list(x.clips).map(c => { c = typeof c === "string" ? { src: c } : (c || {}); return c.src ? `<div class="clip"${/^\d+(\.\d+)?\s*[\/:]\s*\d+(\.\d+)?$/.test(String(c.ratio || "")) ? ` style="aspect-ratio:${esc(String(c.ratio).replace(":", "/"))}"` : ""}><video src="${esc(c.src)}" muted loop autoplay playsinline preload="metadata" aria-label="${esc(x.title)} gameplay clip"></video><button class="enlarge" type="button" data-video="${esc(c.src)}" aria-label="Enlarge ${esc(x.title)} gameplay clip">${icon.zoom}</button></div>` : ""; }).join("")}${ytId(x.video) ? `<div class="video"${/^\d+(\.\d+)?\s*[\/:]\s*\d+(\.\d+)?$/.test(String(x.video_ratio || "")) ? ` style="aspect-ratio:${esc(String(x.video_ratio).replace(":", "/"))}"` : ""}><iframe src="https://www.youtube-nocookie.com/embed/${ytId(x.video)}?autoplay=1&mute=1&loop=1&playlist=${ytId(x.video)}&controls=0&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3&disablekb=1&fs=0" title="${esc(x.title)} video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe><a class="video-link" href="https://www.youtube.com/watch?v=${ytId(x.video)}" target="_blank" rel="noopener" aria-label="Watch ${esc(x.title)} on YouTube">YouTube ${icon.out}</a></div>` : ""}${list(x.images).map((src, n) => `<div class="shot"><img src="${esc(src)}" alt="${esc(x.title)} screenshot ${n + 1}" loading="lazy"><button class="enlarge" type="button" data-full="${esc(src)}" data-alt="${esc(x.title)} screenshot ${n + 1}" aria-label="Enlarge ${esc(x.title)} screenshot ${n + 1}">${icon.zoom}</button></div>`).join("")}</div>` : ""}
       </article>`; }).join("")}</div>` : ""}
     <div class="more-exp">
-      <div>
-        <h3>${esc(d.experience_heading || "Complete work experience")}</h3>
+      <div class="more-exp-text">
+        <img class="work-gif" src="images/work.gif" alt="" width="512" height="512">
+        <div>
+        <h3>${esc(d.experience_heading || "Work Experience")}</h3>
         <p>${esc(d.experience_blurb || "Every game I've worked on, grouped by company and the time I spent there.")}</p>
+        </div>
       </div>
       <a class="btn primary" href="experience.html">View all ${icon.out}</a>
     </div>
@@ -396,6 +399,7 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 </main>
 <dialog class="lightbox" id="lightbox" aria-label="Screenshot preview">
   <img id="lbImg" alt="">
+  <video id="lbVideo" controls loop playsinline hidden></video>
   <button class="btn icon-only lb-close" type="button" id="lbClose" aria-label="Close preview">${icon.close}</button>
 </dialog>
 <dialog class="viewer" id="viewer" aria-labelledby="viewerTitle">
@@ -430,21 +434,29 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
       }
     }
 
-    // Screenshot enlarge
-    const lb = document.getElementById("lightbox"), lbImg = document.getElementById("lbImg");
+    // Screenshot and clip enlarge
+    const lb = document.getElementById("lightbox"), lbImg = document.getElementById("lbImg"), lbVid = document.getElementById("lbVideo");
     const openShot = b => {
       if (!lb.showModal) return;
-      lbImg.src = b.dataset.full; lbImg.alt = b.dataset.alt || "";
+      const isVid = !!b.dataset.video;
+      lbImg.hidden = isVid; lbVid.hidden = !isVid;
+      if (isVid) { lbVid.src = b.dataset.video; lbVid.play().catch(() => {}); }
+      else { lbImg.src = b.dataset.full; lbImg.alt = b.dataset.alt || ""; }
       lb.showModal();
     };
-    document.querySelectorAll(".shot").forEach(w => {
+    document.querySelectorAll(".shot, .clip").forEach(w => {
       const b = w.querySelector(".enlarge");
-      w.querySelector("img").addEventListener("click", () => openShot(b));
+      if (!b) return;
+      const m = w.querySelector("img, video");
+      m.style.cursor = "zoom-in";
+      m.addEventListener("click", () => openShot(b));
       b.addEventListener("click", () => openShot(b));
     });
-    document.getElementById("lbClose").addEventListener("click", () => lb.close());
-    lb.addEventListener("click", e => { if (e.target !== document.getElementById("lbClose")) lb.close(); });
-    lb.addEventListener("close", () => { lbImg.removeAttribute("src"); });
+    const tidy = () => { lbImg.removeAttribute("src"); lbVid.pause(); lbVid.removeAttribute("src"); lbVid.load(); };
+    const shut = () => { lb.close(); tidy(); };
+    document.getElementById("lbClose").addEventListener("click", shut);
+    lb.addEventListener("click", e => { if (e.target !== lbVid && e.target !== document.getElementById("lbClose")) shut(); });
+    lb.addEventListener("close", tidy);
 
     // Resume / CV viewer
     const dlg = document.getElementById("viewer");

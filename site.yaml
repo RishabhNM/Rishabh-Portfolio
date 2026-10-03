@@ -58,7 +58,7 @@ skills:
 
 projects_subtitle: "A few of the projects I've worked on that best show what I'm good at."
 
-experience_heading: Complete work experience
+experience_heading: Work Experience
 experience_blurb: "Every game I've worked on, grouped by company and the time I spent there."
 
 projects:
@@ -80,7 +80,6 @@ projects:
     clips:
       - src: images/cozy-words-clip.mp4
         ratio: 360/640
-        link: https://www.youtube.com/watch?v=MVk3CP7FwUE
     images:
       - images/cozy-words-1.jpg
       - images/cozy-words-2.jpg
@@ -110,7 +109,6 @@ projects:
     clips:
       - src: images/crash-attack-clip.mp4
         ratio: 512/640
-        link: https://www.youtube.com/watch?v=SUtGvF9K4oM
     images:
       - images/crash-attack-1.jpg
       - images/crash-attack-2.jpg
@@ -131,7 +129,6 @@ projects:
     clips:
       - src: images/ice-cream-connect-clip.mp4
         ratio: 288/640
-        link: https://www.youtube.com/watch?v=jVb6XN8yS2o
     images:
       - images/ice-cream-connect-1.jpg
       - images/ice-cream-connect-2.jpg
@@ -153,11 +150,28 @@ projects:
     clips:
       - src: images/space-merge-clip.mp4
         ratio: 720/900
-        link: https://www.youtube.com/watch?v=OyauMU5zvwU
     images:
       - images/space-merge-1.png
       - images/space-merge-2.png
       - images/space-merge-3.png
+    links: []
+
+  - title: Peg Drop
+    star: true
+    studio: Nearmint Studios
+    genre: Arcade
+    role: Game Design, Systems Design, Unity Development
+    note: |-
+      Shoot balls onto pegs to bounce around and destroy them. Hit as many pegs as you can to build a crazy score multiplier, and touch special pegs to activate powerups!
+
+      Balancing the ball physics to get as many peg hits as possible took a lot of fine tuning. The juice was a lot of fun to work on: the pegs react to every hit, and the character on top reacts to your actions.
+    clips:
+      - src: images/peg-drop-clip.mp4
+        ratio: 9/16
+    images:
+      - images/peg-drop-1.png
+      - images/peg-drop-2.png
+      - images/peg-drop-3.png
     links: []
 
   - title: Client Projects (15+ games)
