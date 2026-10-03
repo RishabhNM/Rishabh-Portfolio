@@ -58,15 +58,17 @@ skills:
 
 projects_subtitle: ""
 
-projects_note: "Projects marked with {star} showcase a strong part of my skill set."
+experience_heading: Complete work experience
+experience_blurb: "Every game I've worked on, grouped by company and the time I spent there."
 
 projects:
   - title: "Cozy Words: Word Trivia"
     star: true
     studio: Nearmint Studios
     genre: Word, Trivia
-    role: Systems Design, UI Design, Lead Unity Developer
-    note: "Designed the **Grid System**, **Objective Phrase** and **Mystery Tile** systems. The game was further updated after launch with more content, including challenges and additional levels."
+    role: Systems Design, UI Design, Unity Developer
+    note: |-
+      Cozy Words is a word trivia game. Players make words from a grid of letter tiles to reveal the objective phrase. The levels cover pop culture, geography trivia and more.
     kpis:
       - label: CPI
         value: "$1.00"
@@ -75,6 +77,15 @@ projects:
       - label: D7
         value: "5%"
     kpi_note: First test with HitApps (US)
+    clips:
+      - src: images/cozy-words-clip.mp4
+        ratio: 360/640
+        link: https://www.youtube.com/watch?v=MVk3CP7FwUE
+    images:
+      - images/cozy-words-1.jpg
+      - images/cozy-words-2.jpg
+      - images/cozy-words-3.jpg
+      - images/cozy-words-4.jpg
     links:
       - label: Google Play
         url: https://play.google.com/store/apps/details?id=com.NearMint.CozyWords&hl=en_IN
@@ -83,8 +94,9 @@ projects:
     star: true
     studio: Nearmint Studios
     genre: Arcade
-    role: Systems Design, UI Design, Lead Unity Developer
-    note: "Designed **block spawning, card upgrades, procedural level progression and meta progression**. Marked as a **Hot Prototype** on Voodoo's platform."
+    role: Systems Design, UI Design, Unity Developer
+    note: |-
+      Crash Attack! is an arcade game where you launch balls to break blocks. Your goal is to dig all the way to the bottom. Pick upgrades along the way to do more damage and shoot more balls.
     kpis:
       - label: CPI
         value: "$1.65"
@@ -94,16 +106,38 @@ projects:
         value: "10%"
       - label: Playtime
         value: "30 min"
-    kpi_note: First test with Voodoo
+    kpi_note: Tested with Voodoo
+    clips:
+      - src: images/crash-attack-clip.mp4
+        ratio: 512/640
+        link: https://www.youtube.com/watch?v=SUtGvF9K4oM
+    images:
+      - images/crash-attack-1.jpg
+      - images/crash-attack-2.jpg
+      - images/crash-attack-3.jpg
+      - images/crash-attack-4.jpg
     links:
       - label: Google Play
         url: https://play.google.com/store/apps/details?id=com.NearMintStudios.CrashAttack&hl=en_IN
 
   - title: "Ice Cream Connect!"
+    star: true
     studio: Nearmint Studios
     genre: Puzzle
-    role: Game Designer & Programmer
-    note: "Built in a 4-week internal game jam; later attracted Voodoo's interest."
+    role: Game Design, UI Design
+    note: |-
+      Ice Cream Connect! is a connect-the-dots game. Connect scoops of the same colour to serve your customers, but be quick, because customers have limited patience.
+
+      Built during a 4-week internal game jam. Attracted Voodoo's attention on release.
+    clips:
+      - src: images/ice-cream-connect-clip.mp4
+        ratio: 288/640
+        link: https://www.youtube.com/watch?v=jVb6XN8yS2o
+    images:
+      - images/ice-cream-connect-1.jpg
+      - images/ice-cream-connect-2.jpg
+      - images/ice-cream-connect-3.jpg
+      - images/ice-cream-connect-4.jpg
     links:
       - label: Google Play
         url: https://play.google.com/store/apps/details?id=com.NearMintStudios.IceCreamConnect&hl=en_IN
@@ -197,6 +231,16 @@ projects:
     studio: Game Jams
     genre: Tower Defence
     role: Game Designer, Systems Designer, Economy Balance
+    note: |-
+      I Ended A 100-Year War By Spinning A Yo-Yo!, or IEA100YWBSAY for short (which isn't really short, is it?), is a tower defence roguelite. Defend the kingdom by spinning your trusty yo-yo, and get upgrades as you beat waves of enemies to power it up.
+
+      This game was made in 4 days for a game jam. I challenged myself to design and balance the economy to fit a set playtime of about 15-20 minutes.
+    clips:
+      - src: images/yoyo-war-clip-1.mp4
+        ratio: 640/360
+      - src: images/yoyo-war-clip-2.mp4
+        ratio: 720/406
+    fit: true
     links:
       - label: Play on itch.io
         url: https://rishabhg099.itch.io/i-ended-a-100-year-war-by-spinning-a-yoyo
@@ -205,6 +249,12 @@ projects:
     studio: Game Jams
     genre: Puzzle, Sokoban
     role: Systems Designer
+    clips:
+      - src: images/parasocial-clip.mp4
+        ratio: 640/356
+    images:
+      - images/parasocial-1.jpg
+    fit: true
     links:
       - label: Play on itch.io
         url: https://veekshith-k.itch.io/parasocial
