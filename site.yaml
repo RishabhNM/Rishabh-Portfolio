@@ -141,6 +141,25 @@ projects:
       - label: Google Play
         url: https://play.google.com/store/apps/details?id=com.NearMintStudios.IceCreamConnect&hl=en_IN
 
+  - title: Space Merge
+    star: true
+    studio: Nearmint Studios
+    genre: Puzzle, Merge
+    role: Game Design, Systems Design, Unity Development
+    note: |-
+      Drop planets into a small gravity pocket, and two similar planets merge into a bigger one. Can you merge your way up to the sun?
+
+      Space Merge started as a twist on the popular Suika game. Making the planets feel satisfying to drop in a central gravity field was a fun challenge, and it took a lot of tuning. The planets had to feel light, but heavy enough that small ones wedge into small gaps and merge easily, which keeps the gameplay flowing.
+    clips:
+      - src: images/space-merge-clip.mp4
+        ratio: 720/900
+        link: https://www.youtube.com/watch?v=OyauMU5zvwU
+    images:
+      - images/space-merge-1.png
+      - images/space-merge-2.png
+      - images/space-merge-3.png
+    links: []
+
   - title: Client Projects (15+ games)
     studio: Nearmint Studios
     genre: Puzzle, Arcade, Merge
@@ -244,7 +263,6 @@ projects:
       - label: Play on itch.io
         url: https://rishabhg099.itch.io/i-ended-a-100-year-war-by-spinning-a-yoyo
   - title: Parasocial
-    star: true
     studio: Game Jams
     genre: Puzzle, Sokoban
     role: Systems Designer
