@@ -19,8 +19,6 @@ stats:
   - value: "15+"
     label: client games
 
-intro_clicks: ["CLICK ME", "CLICK ME AGAIN!", "AGAIN AGAIN!", "AGAINNNNNNNNN!"]
-intro_end: "erm...that's it..."
 
 downloads:
   - label: Resume
@@ -87,12 +85,11 @@ projects:
       - "**==Mystery Tile==:** A word with no letters for the phrase would be wasted. Those extra tiles now count toward unlocking a ==Mystery Tile==, which reveals a random hidden letter."
     clips:
       - src: images/cozy-words-clip.mp4
-        ratio: 360/640
+        ratio: 720/1280
     images:
-      - images/cozy-words-1.jpg
-      - images/cozy-words-2.jpg
-      - images/cozy-words-3.jpg
-      - images/cozy-words-4.jpg
+      - images/cozy-words-1.png
+      - images/cozy-words-2.png
+      - images/cozy-words-3.png
     links:
       - label: Google Play
         url: https://play.google.com/store/apps/details?id=com.NearMint.CozyWords&hl=en_IN
@@ -121,11 +118,11 @@ projects:
       - "**Card Upgrades:** Beyond the meta progression, in-level upgrades intrigued us. The gameplay allowed for a lot of unique upgrades, and we added more ^^legendary^^ ones to the pool as the player progressed."
     clips:
       - src: images/crash-attack-clip.mp4
-        ratio: 512/640
+        ratio: 720/900
     images:
-      - images/crash-attack-1.jpg
-      - images/crash-attack-2.jpg
-      - images/crash-attack-4.jpg
+      - images/crash-attack-1.png
+      - images/crash-attack-2.png
+      - images/crash-attack-3.png
     links:
       - label: Google Play
         url: https://play.google.com/store/apps/details?id=com.NearMintStudios.CrashAttack&hl=en_IN
@@ -145,10 +142,10 @@ projects:
       - src: images/ice-cream-connect-clip.mp4
         ratio: 288/640
     images:
-      - images/ice-cream-connect-1.jpg
-      - images/ice-cream-connect-2.jpg
-      - images/ice-cream-connect-3.jpg
-      - images/ice-cream-connect-4.jpg
+      - images/ice-cream-connect-1.png
+      - images/ice-cream-connect-2.png
+      - images/ice-cream-connect-3.png
+      - images/ice-cream-connect-4.png
     links:
       - label: Google Play
         url: https://play.google.com/store/apps/details?id=com.NearMintStudios.IceCreamConnect&hl=en_IN
@@ -382,4 +379,4 @@ achievements:
   - "Co-hosted **The Game Awards 2021** in India."
   - "Got my friends to experience the beauty that is Outer Wilds."
 languages: [English (Fluent), Hindi (Native), Japanese (Beginner)]
-hobbies: [Speedrunning Games, Trading Card Collecting, Video and Image Editing]
+hobbies: [Speedrunning Games, Collecting Trading Cards, Video and Image Editing]

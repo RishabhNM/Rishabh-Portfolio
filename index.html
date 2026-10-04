@@ -94,34 +94,14 @@ strong { color: var(--fg); font-weight: 700; }
 @keyframes duck-flip { 0%, 49.99% { transform: scaleX(1); } 50%, 99.99% { transform: scaleX(-1); } 100% { transform: scaleX(1); } }
 .role-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 20px; margin-top: -12px; }
 .headline { margin: 0; font: 600 clamp(22px, 3.4vw, 36px)/1.2 var(--display); color: var(--accent); letter-spacing: -.005em; }
-.headline .hw { display: inline-block; white-space: nowrap; }
-.headline .hl { display: inline-block; animation: hl-bounce 3.2s ease-in-out infinite; }
-@keyframes hl-bounce { 0%, 16%, 100% { transform: translateY(0); } 4% { transform: translateY(-.32em); } 9% { transform: translateY(0); } 12% { transform: translateY(-.1em); } }
 .loc { font: 500 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.intro-card { display: grid; gap: 28px; width: fit-content; max-width: 100%; padding: clamp(18px, 3vw, 28px) clamp(22px, 4vw, 40px); background: var(--surface); border: 1px solid var(--line); border-radius: calc(var(--radius) + 6px); }
-.stat-zone { display: grid; gap: 22px; justify-items: center; text-align: center; width: 100%; margin-top: clamp(24px, 5vw, 56px); }
-.intro-card[hidden], .stats li[hidden], .click-end[hidden] { display: none; }
-.stat-panel:not([hidden]) { animation: panel-pop .45s cubic-bezier(.2, 1.3, .4, 1) both; transform-origin: 50% 100%; }
-.stat-panel .stats li:not([hidden]) { animation: stat-in .5s ease-out both; }
-.click-me { min-height: 52px; padding: 12px 28px; font-size: 16px; letter-spacing: .04em; background: var(--accent); border-color: var(--accent); color: var(--on-accent); animation: toy-pulse 1.4s ease-in-out infinite; }
-.click-me[hidden] { display: none; }
-.click-me[data-level] { animation: click-shake var(--sp, .4s) linear infinite; }
-.click-me[data-level="1"] { --a: 2px; --r: 1deg; --sp: .42s; }
-.click-me[data-level="2"] { --a: 4.5px; --r: 2.6deg; --sp: .3s; }
-.click-me[data-level="3"] { --a: 9px; --r: 5.5deg; --sp: .18s; }
-@keyframes click-shake { 0%, 100% { transform: translate(0, 0) rotate(0); } 12% { transform: translate(calc(var(--a) * -1), calc(var(--a) * .6)) rotate(calc(var(--r) * -1)); } 25% { transform: translate(var(--a), calc(var(--a) * -.8)) rotate(var(--r)); } 38% { transform: translate(calc(var(--a) * -.7), calc(var(--a) * -.9)) rotate(calc(var(--r) * -.8)); } 50% { transform: translate(calc(var(--a) * .9), calc(var(--a) * .7)) rotate(calc(var(--r) * .9)); } 62% { transform: translate(calc(var(--a) * -1), calc(var(--a) * -.4)) rotate(calc(var(--r) * -1)); } 75% { transform: translate(calc(var(--a) * .6), calc(var(--a) * .9)) rotate(calc(var(--r) * .7)); } 88% { transform: translate(calc(var(--a) * -.5), calc(var(--a) * -.6)) rotate(calc(var(--r) * -.6)); } }
-.click-me:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
-.click-end { margin: 0; max-width: 70ch; text-align: center; color: var(--muted); font-style: italic; font-size: 16px; animation: stat-in .6s ease-out both; }
-.click-end .ew { display: inline-block; white-space: nowrap; }
-.click-end .ew span { display: inline-block; animation: end-wave 1.5s ease-in-out infinite; }
-@keyframes end-wave { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-.22em); } }
-@keyframes panel-pop { from { opacity: 0; transform: scale(.7) translateY(14px); } to { opacity: 1; transform: none; } }
-@keyframes stat-in { from { opacity: 0; transform: translateX(-12px) scale(.92); } to { opacity: 1; transform: none; } }
 .intro-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 44px; margin: 0; padding: 0; list-style: none; }
-.stats li { display: grid; gap: 2px; justify-items: center; }
-.stats b { font: 600 28px/1.1 var(--display); color: var(--fg); font-variant-numeric: tabular-nums; }
-.stats span { font-size: 14px; color: var(--muted); }
+.stats { display: flex; flex-wrap: wrap; gap: 20px 0; margin: clamp(8px, 2vw, 24px) 0 0; padding: 0; list-style: none; }
+.stats li { display: grid; gap: 5px; padding: 2px clamp(18px, 3vw, 36px); border-left: 1px solid var(--line); }
+.stats li:first-child { padding-left: 0; border-left: 0; }
+.stats b { font: 700 clamp(30px, 4.4vw, 46px)/1 var(--display); letter-spacing: -.02em; color: var(--fg); font-variant-numeric: tabular-nums; }
+.stats b i { font-style: normal; }
+.stats span { font: 500 12px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 
 /* Sections */
 section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid var(--line); scroll-margin-top: 70px; }
@@ -207,7 +187,7 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 .lightbox { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: var(--fg); }
 .lightbox[open] { display: grid; place-items: center; }
 .lightbox::backdrop { background: rgba(6, 8, 12, .86); backdrop-filter: blur(4px); }
-.lightbox img, .lightbox video { max-width: min(94vw, 1100px); max-height: 90dvh; width: auto; height: auto; border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 12px 48px rgba(0,0,0,.6); }
+.lightbox img, .lightbox video { max-width: 94vw; max-height: 90dvh; border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 12px 48px rgba(0,0,0,.6); }
 .lightbox img[hidden], .lightbox video[hidden] { display: none; }
 .lightbox .lb-close { position: fixed; top: 16px; right: 16px; }
 .shots img { flex: none; height: 300px; width: auto; border-radius: 12px; border: 1px solid var(--line); background: var(--surface-2); scroll-snap-align: start; }
@@ -304,15 +284,11 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
   .proj-nav { display: block; position: fixed; top: 50%; right: 16px; z-index: 5; width: clamp(138px, calc((100vw - 1080px) / 2 - 36px), 240px); padding: 14px 8px 10px; border: 1px solid var(--line); border-radius: 16px; background: color-mix(in srgb, var(--surface) 82%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 10px 34px rgba(0,0,0,.35); transform: translate(14px, -50%); opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s; }
   .proj-nav.show { opacity: 1; transform: translate(0, -50%); pointer-events: auto; }
   .proj-nav::before { content: "Featured projects"; display: block; padding: 0 8px 10px; margin-bottom: 6px; border-bottom: 1px solid var(--line); font: 500 10.5px/1 var(--mono); letter-spacing: .06em; white-space: nowrap; text-transform: uppercase; color: var(--accent-soft); }
-  .proj-nav ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; counter-reset: pn; }
-  .proj-nav li { counter-increment: pn; }
+  .proj-nav ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .proj-nav a { display: flex; align-items: baseline; gap: 8px; padding: 7px 8px; border-radius: 9px; color: var(--muted); font-size: 13px; line-height: 1.3; text-decoration: none; overflow: hidden; white-space: nowrap; transition: color .15s, background .15s, transform .15s; }
-  .proj-nav a::before { content: counter(pn, decimal-leading-zero); flex: none; font: 500 10px/1 var(--mono); letter-spacing: .06em; color: #5F6778; transition: color .15s; }
   .proj-nav a span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
   .proj-nav a:hover { color: var(--fg); background: color-mix(in srgb, var(--fg) 6%, transparent); }
-  .proj-nav a:hover::before { color: var(--muted); }
   .proj-nav a.on { color: var(--fg); font-weight: 700; background: color-mix(in srgb, var(--accent) 16%, transparent); }
-  .proj-nav a.on::before { color: var(--accent); }
 }
 /* About */
 .about-lead { margin: 0 0 clamp(48px, 7vw, 80px); max-width: none; font-size: clamp(15px, 1.4vw, 16.5px); line-height: 1.75; color: var(--fg); }
@@ -421,18 +397,12 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 <main id="top">
   <section class="wrap intro">
     <div class="name-row"><h1 aria-label="${esc(p.name)}">${String(p.name || "").split(" ").map(w => `<span class="nw" aria-hidden="true">${[...w].map(ch => `<span class="nl">${esc(ch)}</span>`).join("")}</span>`).join(" ")}</h1><div class="duck-track" aria-hidden="true"><div class="duck-walk"><img class="duck" src="images/duck.gif" alt="" width="256" height="256"></div></div></div>
-    <div class="role-line"><p class="headline" aria-label="${esc(p.headline)}">${(() => { let n = 0; return String(p.headline || "").split(" ").map(w => `<span class="hw" aria-hidden="true">${[...w].map(ch => `<span class="hl" style="animation-delay:${(n++ * 0.07).toFixed(2)}s">${esc(ch)}</span>`).join("")}</span>`).join(" "); })()}</p>${p.location ? `<span class="loc">${esc(p.location)}</span>` : ""}</div>
+    <div class="role-line"><p class="headline">${esc(p.headline)}</p>${p.location ? `<span class="loc">${esc(p.location)}</span>` : ""}</div>
     <div class="intro-row">
       ${p.email ? `<a class="btn primary" href="#contact">Get in touch</a>` : ""}
       ${linkBtns(p.links)}
     </div>
-    ${list(d.stats).length ? `<div class="stat-zone">
-      <div class="intro-card stat-panel" id="statPanel" hidden>
-        <ul class="stats">${list(d.stats).map(s => `<li hidden><b>${esc(s.value)}</b><span>${esc(s.label)}</span></li>`).join("")}</ul>
-      </div>
-      <button class="btn click-me" type="button" id="clickMe">${esc(list(d.intro_clicks)[0] || "CLICK ME")}</button>
-      <p class="click-end" id="clickEnd" aria-label="${esc(d.intro_end || "")}" hidden>${(() => { let n = 0; return String(d.intro_end || "").split(" ").map(w => `<span class="ew" aria-hidden="true">${[...w].map(ch => `<span style="animation-delay:${(n++ * 0.07).toFixed(2)}s">${esc(ch)}</span>`).join("")}</span>`).join(" "); })()}</p>
-    </div>` : ""}
+    ${list(d.stats).length ? `<ul class="stats">${list(d.stats).map(s => `<li><b>${esc(s.value).replace("+", "<i>+</i>")}</b><span>${esc(s.label)}</span></li>`).join("")}</ul>` : ""}
   </section>
 
   ${featured.length ? `
@@ -873,7 +843,18 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
       if (isVid) { lbVid.src = b.dataset.video; lbVid.play().catch(() => {}); }
       else { lbImg.src = b.dataset.full; lbImg.alt = b.dataset.alt || ""; }
       lb.showModal();
+      if (isVid) { if (lbVid.videoWidth) fitPreview(lbVid, lbVid.videoWidth, lbVid.videoHeight); }
+      else if (lbImg.complete && lbImg.naturalWidth) fitPreview(lbImg, lbImg.naturalWidth, lbImg.naturalHeight);
     };
+    // Scale the preview to fill the screen (small sources are enlarged too, so every preview comes out a similar size)
+    const fitPreview = (el, nw, nh) => {
+      if (!nw || !nh) return;
+      const k = Math.min(innerWidth * 0.94 / nw, innerHeight * 0.9 / nh);
+      el.style.width = Math.round(nw * k) + "px";
+      el.style.height = Math.round(nh * k) + "px";
+    };
+    lbImg.addEventListener("load", () => fitPreview(lbImg, lbImg.naturalWidth, lbImg.naturalHeight));
+    lbVid.addEventListener("loadedmetadata", () => fitPreview(lbVid, lbVid.videoWidth, lbVid.videoHeight));
     document.querySelectorAll(".shot, .clip").forEach(w => {
       const b = w.querySelector(".enlarge");
       if (!b) return;
@@ -887,29 +868,6 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
     document.getElementById("lbClose").addEventListener("click", shut);
     lb.addEventListener("click", e => { if (e.target !== lbVid && e.target !== document.getElementById("lbClose")) shut(); });
     lb.addEventListener("close", tidy);
-
-    // Intro: CLICK ME reveals the stats one by one
-    const clickBtn = document.getElementById("clickMe");
-    if (clickBtn) {
-      const labels = list(d.intro_clicks);
-      const panel = document.getElementById("statPanel");
-      const items = [...panel.querySelectorAll("li")];
-      const endMsg = document.getElementById("clickEnd");
-      let clicks = 0;
-      clickBtn.addEventListener("click", () => {
-        if (clicks < items.length) {
-          panel.hidden = false;
-          items[clicks].hidden = false;
-          clicks++;
-          clickBtn.dataset.level = String(Math.min(clicks, 3));   // pulse at first, then shake harder with every press
-          if (clicks < items.length) clickBtn.textContent = labels[clicks] || clickBtn.textContent;
-          else clickBtn.textContent = labels[clicks] || "AGAIN?";
-        } else {
-          clickBtn.hidden = true;
-          endMsg.hidden = false;
-        }
-      });
-    }
 
     // The letter of the name the duck is walking on lights up in the accent color
     (() => {
