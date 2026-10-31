@@ -11,6 +11,9 @@ profile:
     - label: itch.io
       url: https://rishabhg099.itch.io
 
+# Internal: set to true to bring back the walking duck (letter highlight included). Off for visitors.
+duck: false
+
 stats:
   - value: "4"
     label: years designing games
