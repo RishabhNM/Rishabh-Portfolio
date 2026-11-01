@@ -313,9 +313,9 @@ section.block { padding-block: clamp(88px, 12vw, 150px); border-top: 1px solid v
 .pc-sum { margin: 0; color: #d0d0d3; text-shadow: 0 1px 6px rgba(0, 0, 0, .6); font-size: 14px; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 5; line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
 .pc-more { margin-top: 6px; }
 .proj-modal { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: clamp(10px, 3vh, 32px) clamp(8px, 2vw, 24px); border: 0; background: transparent; color: var(--fg); overflow: hidden; }
-.proj-modal[open] { display: grid; place-items: center; }
+.proj-modal[open] { display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; }
 .proj-modal::backdrop { background: rgba(10, 12, 18, .45); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-.modal-inner { position: relative; width: min(860px, 100%); height: min(88dvh, 820px); }
+.modal-inner { position: relative; width: 100%; max-width: 860px; min-width: 0; height: min(88dvh, 820px); }
 .proj-modal .feature { background: var(--glass-strong); height: 100%; padding: 0; overflow: hidden; display: flex; flex-direction: column; }
 .f-scroll { flex: 1; min-height: 0; overflow-y: auto; padding: clamp(18px, 3vw, 32px); scrollbar-width: thin; scrollbar-color: #55555A transparent; }
 .proj-modal .f-head { padding-bottom: 20px; margin-bottom: 24px; }
