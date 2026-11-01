@@ -23,6 +23,11 @@ stats:
     label: client games
 
 
+# Static picture behind the whole site (stays put while scrolling). Drop it in images/backgrounds/, run tools/make-web-assets.py, point at the images/web/ copy.
+page_background: images/web/background-1.webp
+page_background_blur: images/web/background-1-blur.webp
+page_background_opacity: 0.115
+
 downloads:
   - label: Resume
     file: files/Rishabh_Gupta_Resume.pdf
@@ -58,16 +63,17 @@ favourites:
 
 skills:
   highlight: [Systems Design, KPI Analysis, Unity Engine]
-  other: [C#, Economy Balancing, Design Documentation, "Analytics SDKs (Firebase, GameAnalytics)", Prototyping, UI Design, Figma]
+  other: [C#, Economy Balancing, Design Documentation, "Analytics SDKs (Firebase, GameAnalytics)", Prototyping, UI Design]
 
 projects_subtitle: "These projects show the best of my skills, from systems design to working code."
 
 experience_heading: Work Experience
 experience_blurb: "Check out my entire work history along with each game I'm credited on."
-experience_intro: "I've designed game systems at both **Funcell Games** and **Nearmint Studios**. I'm also confident in the Unity Engine, which helps me prototype quickly and communicate clearly with my team. I have a strong sense for ==game juice== too, and it's my favourite phase of development."
 
 projects:
   - title: "Cozy Words: Word Trivia"
+    summary: "A word trivia game. Make words from a grid of letter tiles to reveal the objective phrase."
+    card_image: images/cards/cozy-words.png
     star: true
     studio: Nearmint Studios
     genre: Word, Trivia
@@ -98,6 +104,8 @@ projects:
         url: https://play.google.com/store/apps/details?id=com.NearMint.CozyWords&hl=en_IN
 
   - title: "Crash Attack!"
+    summary: "An arcade game where you launch balls to break blocks and dig all the way to the bottom."
+    card_image: images/cards/crash-attack.png
     star: true
     studio: Nearmint Studios
     genre: Arcade
@@ -131,6 +139,8 @@ projects:
         url: https://play.google.com/store/apps/details?id=com.NearMintStudios.CrashAttack&hl=en_IN
 
   - title: "Ice Cream Connect!"
+    summary: "A connect-the-dots game. Connect same-colour scoops to serve your customers before they run out of patience."
+    card_image: images/cards/ice-cream-connect.png
     star: true
     studio: Nearmint Studios
     genre: Puzzle
@@ -154,6 +164,8 @@ projects:
         url: https://play.google.com/store/apps/details?id=com.NearMintStudios.IceCreamConnect&hl=en_IN
 
   - title: Space Merge
+    summary: "Drop planets into a gravity pocket and merge matching ones into bigger planets. Can you reach the sun?"
+    card_image: images/cards/space-merge.png
     star: true
     in_experience: false
     studio: Nearmint Studios
@@ -178,6 +190,8 @@ projects:
     links: []
 
   - title: Peg Drop
+    summary: "Shoot balls onto pegs, build a crazy score multiplier and trigger powerups."
+    card_image: images/cards/peg-drop.png
     star: true
     in_experience: false
     studio: Nearmint Studios
@@ -192,7 +206,7 @@ projects:
       - "**Special Powerups:** Blue pegs activate ##powerups##, giving the player 2 options to choose from. Each layout features around 4-5 blue pegs, which keeps the level flowing and lets players make good use of their limited balls."
       - "**Extra Ball:** Hitting enough pegs rewards an extra ball, which rewards smart play. This works great for the platform, since it was all about rewarding skill."
     clips:
-      - src: images/peg-drop-clip.mp4
+      - src: images/web/peg-drop-clip.mp4
         ratio: 9/16
     images:
       - images/peg-drop-1.png
@@ -299,11 +313,13 @@ projects:
     links: []
 
   - title: "I Ended A 100-Year War By Spinning A Yo-Yo!"
+    summary: "A tower defence roguelite. Spin your trusty yo-yo to defend the kingdom and power it up."
+    card_image: images/cards/yo-yo.png
     star: true
     studio: Game Jams
     genre: Tower Defence
     spin_word: yo-yo
-    toy_button: "Start Spinnin'"
+    toy_button: "CLICK ME"
     role: Game Designer, Systems Designer, Economy Balance, Everything... basically
     experience_role: Game Designer, Systems Designer, Economy Balance
     note: |-
@@ -312,9 +328,9 @@ projects:
       - "**Systems Design:** A tower defence roguelite, made as a great test of my skills in economy balance and systems design. I came up with the yo-yo types, unique upgrades for the yo-yos and enemy behaviour in a short span of time."
       - "**Economy Balance:** Balancing the economy was the main challenge. I targeted around 15-20 minutes of playtime to finish the game, but there wasn't enough time to test it in the 4 days of development. It turned out great, mostly from my hunch, and players were happy with the game flow."
     clips:
-      - src: images/yoyo-war-clip-1.mp4
+      - src: images/web/yoyo-war-clip-1.mp4
         ratio: 640/360
-      - src: images/yoyo-war-clip-2.mp4
+      - src: images/web/yoyo-war-clip-2.mp4
         ratio: 720/406
     fit: true
     links:
